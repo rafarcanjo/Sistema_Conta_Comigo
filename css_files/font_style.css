@@ -22,6 +22,16 @@ h2{
 	
 }
 
+p{
+	font-size: 17px;
+	font-weight: 250;
+	color: #696764;
+	
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Every Label */
 .label_1{	
 	font-size: 32px;	
@@ -54,15 +64,4 @@ h2{
 #developer_footer{
 	font-size: 14px;
 	color: #696764;
-}
-
-p{
-	font-size: 17px;
-	font-weight: 250;
-	width: 250px;
-	color: #696764;
-	
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
 }

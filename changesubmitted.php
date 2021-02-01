@@ -23,7 +23,7 @@
 					Pronto!
 				</h1>
 				<p>
-					Nossa equipe entrará em contato com você para enviar suas informacoes de login.
+					Nossa equipe entrar&aacute; em contato com voc&ecirc; para enviar suas informac&otilde;es de login.
 				</p>
 			</div>	
 		</div>			

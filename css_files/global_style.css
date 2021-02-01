@@ -4,6 +4,130 @@ body{
 	margin:0px;
 }
 
+/* Container -> System */
+.container_system{	
+	width: 100vw;
+	height: 100vw;
+	background-color: #FFFFFF;
+	
+	display: block;	
+}
+
+/* Container -> Estático */
+.container_static{	
+	width: 100vw;
+	height: 700px;
+	background-color: #FFFFFF;
+	
+	display: block;	
+}
+
+/* Container -> Login */
+.container_login{	
+	width: 100vw;
+	height: 100vh;
+	background-color: #E6E8F4;
+	
+	display: block;	
+}
+
+/* Box 1 -> Login / Password / Requests */
+.box_1{		
+    margin-left: 33%;   
+	width: 350px;
+	height: 450px;
+	background-color: white; 
+}
+
+/* Box 2 -> Home */
+.box_2{
+	width: 340px;
+	height: 420px;
+	display: block;
+	float: left;
+	padding-top: 35px;
+	
+	border-style: groove;
+	
+	text-align: center;
+}
+
+/* Box 3 -> Horizontal Cell -> horizontal screen split */
+.box_3{
+	width: 90%;
+	padding-left: 5%;
+	height: 270px;
+	display: block;
+	float: left;
+}
+
+/* Box 4 -> Vertical Cell -> vertical screen split 50% */
+.box_4{
+	width: 45%;
+	display: block;
+	float: left;
+}
+
+/* Box 5 -> Vertical Cell -> vertical screen split 30% */
+.box_5{
+	width: 240px;
+	height: 250px;
+	display: block;
+	float: left;
+}
+
+/* Box 6 -> Status of Portador */
+.box_6{
+	width: 150px;
+	height: 80px;
+	display: block;
+	float: left;
+	
+	border: groove;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+/* Box 7 -> Horizontal Cell -> horizontal screen split */
+.box_7{
+	width: 90%;
+	padding-left: 5%;
+	height: 110px;
+	display: block;
+	float: left;
+}
+
+/* Cell 1 -> Schedules Information */
+.cell_1{
+	width: 200px;
+	height: 80px;
+	display: block;
+	float: left;
+}
+
+/* Cell 2 -> Schedules Information */
+.cell_2{
+	width: 100%;
+	height: 30px;
+	display: block;
+	float: left;
+}
+
+/* Box Footer -> Login / Forgot Password / Change Submitted */
+.box_footer{	
+    display: block;
+    margin-left: 31%;    	
+}
+
+.link_footer{
+	width: 200px;
+	height: 30px;
+	
+	display: block;
+	float: left;
+}
+
 /* Every Input */
 input{
 	width: 250px;
@@ -46,80 +170,6 @@ input{
     margin-left: auto;
     margin-right: auto;	
     float:left;
-}
-
-/* Container -> System */
-.container_system{	
-	width: 100vw;
-	height: 580px;
-	background-color: #FFFFFF;
-	
-	display: block;	
-}
-
-/* Container -> Login */
-.container_login{	
-	width: 100vw;
-	height: 100vh;
-	background-color: #E6E8F4;
-	
-	display: block;	
-}
-
-/* Box 1 -> Login / Password / Requests */
-.box_1{		
-    margin-left: 33%;   
-	width: 350px;
-	height: 450px;
-	background-color: white; 
-}
-
-/* Box 2 -> Home */
-.box_2{
-	width: 340px;
-	height: 420px;
-	display: block;
-	float: left;
-	padding-top: 35px;
-	
-	border-style: groove;
-	
-	text-align: center;
-}
-
-/* Box 3 -> split the screen */
-.box_3{
-	width: 40%;
-	height: 250px;
-	display: block;
-	float: left;
-}
-
-/* Box 4 -> Status of Portador */
-.box_4{
-	width: 150px;
-	height: 80px;
-	display: block;
-	float: left;
-	
-	border: groove;
-	font-size: 20px;
-	text-align: center;
-	padding-top: 20px;
-}
-
-/* Box Footer -> Login / Forgot Password / Change Submitted */
-.box_footer{	
-    display: block;
-    margin-left: 31%;    	
-}
-
-.link_footer{
-	width: 200px;
-	height: 30px;
-	
-	display: block;
-	float: left;
 }
 
 /* Horizontal Spacers -> */

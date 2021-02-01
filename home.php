@@ -10,7 +10,7 @@
 		
 		<!-- Box Schedule -->
 		<div class="box_2">
-			<label class="label_1">Agenda de<br/> Consultas</label>
+			<label class="label_1">Agenda de<br/> Consultas 222</label>
 			
 			<!-- Image Box Schedule -->
 			<img id="img_schedule" src="img_files/schedule.png">

@@ -20,39 +20,14 @@ input{
 	float:left;	
 }
 
-/* Every Buttons */
-
-/* .btn{
-	width: 260px;
-	height: 30px;
 	
-	background-color: #F58323;
-	border: none;
-	color: white;
-	
-    display: block;
-    margin-left: auto;
-    margin-right: auto;	
-} */
-
-.btn_2{
-	width: 130px;
-	height: 35px;
-	
-	background-color: #F58323;
-	border: none;
-	color: white;
-	
-    display: block;
-    margin-left: auto;
-    margin-right: auto;	
-    float:left;
+	display: block;	
 }
 
-/* Container -> System */
-.container_system{	
+/* Container -> Estático */
+.container_static{	
 	width: 100vw;
-	height: 580px;
+	height: 700px;
 	background-color: #FFFFFF;
 	
 	display: block;	
@@ -88,16 +63,32 @@ input{
 	text-align: center;
 }
 
-/* Box 3 -> split the screen */
+/* Box 3 -> Horizontal Cell -> horizontal screen split */
 .box_3{
-	width: 40%;
+	width: 90%;
+	padding-left: 5%;
+	height: 270px;
+	display: block;
+	float: left;
+}
+
+/* Box 4 -> Vertical Cell -> vertical screen split 50% */
+.box_4{
+	width: 45%;
+	display: block;
+	float: left;
+}
+
+/* Box 5 -> Vertical Cell -> vertical screen split 30% */
+.box_5{
+	width: 240px;
 	height: 250px;
 	display: block;
 	float: left;
 }
 
-/* Box 4 -> Status of Portador */
-.box_4{
+/* Box 6 -> Status of Portador */
+.box_6{
 	width: 150px;
 	height: 80px;
 	display: block;
@@ -107,6 +98,31 @@ input{
 	font-size: 20px;
 	text-align: center;
 	padding-top: 20px;
+}
+
+/* Box 7 -> Horizontal Cell -> horizontal screen split */
+.box_7{
+	width: 90%;
+	padding-left: 5%;
+	height: 110px;
+	display: block;
+	float: left;
+}
+
+/* Cell 1 -> Schedules Information */
+.cell_1{
+	width: 200px;
+	height: 80px;
+	display: block;
+	float: left;
+}
+
+/* Cell 2 -> Schedules Information */
+.cell_2{
+	width: 100%;
+	height: 30px;
+	display: block;
+	float: left;
 }
 
 /* Box Footer -> Login / Forgot Password / Change Submitted */
@@ -121,6 +137,50 @@ input{
 	
 	display: block;
 	float: left;
+}
+
+/* Every Input */
+input{
+	width: 250px;
+	height: 30px;
+	
+    display: block;
+    margin-left: auto;
+    margin-right: auto;		
+}
+
+.input_2{
+	width: 160px;
+	height: 30px;
+	float:left;	
+}
+
+/* Every Buttons */
+.btn{
+	width: 260px;
+	height: 30px;
+	
+	background-color: #F58323;
+	border: none;
+	color: white;
+	
+    display: block;
+    margin-left: auto;
+    margin-right: auto;	
+}
+
+.btn_2{
+	width: 130px;
+	height: 35px;
+	
+	background-color: #F58323;
+	border: none;
+	color: white;
+	
+    display: block;
+    margin-left: auto;
+    margin-right: auto;	
+    float:left;
 }
 
 /* Horizontal Spacers -> */

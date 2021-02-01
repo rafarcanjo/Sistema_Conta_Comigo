@@ -33,8 +33,9 @@
 				
 				<input type="number" placeholder=" Telefone" name="telephone">
 				<div class="spacer_1"></div>
-				
+
 				<input type="text" placeholder=" Empresa (nome do hospital, clínica, etc)" name="company">
+
 				<div class="spacer_1"></div>
 				
 				<input type="submit"  value="Enviar" name="btn_changepassword" class="btn"><br/>

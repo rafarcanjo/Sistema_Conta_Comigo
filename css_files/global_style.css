@@ -1,27 +1,14 @@
+/* Backgroudn Colors */
 
-/* Every Body */
-/* body{
-	margin:0px;
-} */
-
-/* Every Input */
-input{
-	width: 250px;
-	height: 30px;
-	
-    display: block;
-    margin-left: auto;
-    margin-right: auto;		
+.bg-purple {
+	background-color:#4645A3;
 }
 
-.input_2{
-	width: 160px;
-	height: 30px;
-	float:left;	
-}
-
-	
-	display: block;	
+.bg-overlay-worldmap {
+	background-image: url("https://contacomigo.org/wp-content/uploads/2020/12/dotted-worldmap1.png");
+	background-position: top center;
+	background-repeat: none;
+	background-size:auto;
 }
 
 /* Container -> Estático */
@@ -139,49 +126,7 @@ input{
 	float: left;
 }
 
-/* Every Input */
-input{
-	width: 250px;
-	height: 30px;
-	
-    display: block;
-    margin-left: auto;
-    margin-right: auto;		
-}
 
-.input_2{
-	width: 160px;
-	height: 30px;
-	float:left;	
-}
-
-/* Every Buttons */
-.btn{
-	width: 260px;
-	height: 30px;
-	
-	background-color: #F58323;
-	border: none;
-	color: white;
-	
-    display: block;
-    margin-left: auto;
-    margin-right: auto;	
-}
-
-.btn_2{
-	width: 130px;
-	height: 35px;
-	
-	background-color: #F58323;
-	border: none;
-	color: white;
-	
-    display: block;
-    margin-left: auto;
-    margin-right: auto;	
-    float:left;
-}
 
 /* Horizontal Spacers -> */
 .spacer_1{	height: 10px;}

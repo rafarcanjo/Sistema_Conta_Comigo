@@ -6,33 +6,21 @@
 		include 'structure_files/link.html';	
 	?>
 </head>
-<body>
-	<!-- Container 100% -->
-	<div class="container_login">		
-	<div class="spacer_7"></div>
-		
-		<!-- Change Submitted Box -->
-		<div class="box_1">				
-		<div class="spacer_4"></div>
-		
-			<!-- Logo Conta Comigo -->
-			<div>
-				<img class="img_selected" src="img_files/img_select.png">					
-				<div class="spacer_1"></div>
-				<h1>
-					Pronto!
-				</h1>
-				<p>
-					Nossa equipe entrar&aacute; em contato com voc&ecirc; para enviar suas informac&otilde;es de login.
-				</p>
-			</div>	
-		</div>			
-		<div class="spacer_7"></div>
-		
-		<!-- Box Footer -->
-		<div class="box_footer">				
-			<div class="link_footer"><a href="index.php">Voltar para a tela de login</a></div>
+	<body class="bg-purple bg-overlay-worldmap"> 
+		<!-- Container 100% -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2">
+					<div class="bg-white rounded shadow border mt-5 py-5 px-3 mb-4 text-center">
+						<h1><i class="far fa-check-circle text-success"></i> Pronto!</h1>
+						<hr>
+						<p>Nossa equipe entrará em contato com você para enviar suas informacões de login.</p>
+					</div>
+					<div class="text-center">
+						<a href="index.php" class="d-block text-light"><i class="fas fa-angle-left"></i> Voltar para tela de login</a>						
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>

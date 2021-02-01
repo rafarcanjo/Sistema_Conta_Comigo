@@ -10,7 +10,7 @@
 	
 		<!-- Label Div -->
 		<div class="box_3">
-			<h2>Preencha o CPF do portador abaixo para<br/> consultar sua situação cadastral</h2>
+			<h2>Preencha o CPF do portador abaixo para<br/> consultar sua situaÃ§Ã£o cadastral</h2>
 			<div class="spacer_2"></div>
 			
 			<!-- CPF Input Form -->

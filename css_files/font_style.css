@@ -1,7 +1,6 @@
-
-h1{
+/* h1{
 	font-size: 25px;
-	font-weight: 800;
+	font-weight: 700;
 	width: 250px;
 	color: #696764;
 	
@@ -9,18 +8,18 @@ h1{
     margin-left: auto;
     margin-right: auto;
 	
-}
+} */
 
-h2{
+/* h2{
 	font-size: 25px;
-	font-weight: 900;
+	font-weight: 700;
 	color: #696764;
 	
 	display: block;
     margin-left: auto;
     margin-right: auto;
 	
-}
+} */
 
 /* Every Label */
 .label_1{	
@@ -38,25 +37,25 @@ h2{
     margin-right: auto;
 }
 
-/* Name of Company - Header*/
+/* Name of Company - Header
 #name_header{
 	font-size: 14px;
 	color: #696764;
 }
 
-/* Name of System - Footer*/
+Name of System - Footer
 #system_footer{
 	font-size: 14px;
 	color: #696764;
 }
 
-/* Name of Developer - Footer*/
+/* Name of Developer - Footer
 #developer_footer{
 	font-size: 14px;
 	color: #696764;
-}
+} */
 
-p{
+/* p{
 	font-size: 17px;
 	font-weight: 250;
 	width: 250px;
@@ -65,4 +64,4 @@ p{
 	display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} */

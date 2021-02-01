@@ -17,8 +17,8 @@
 		
 			<!-- Logo Conta Comigo -->
 			<div>
-				<p>Por questıes de seguranca, n„o È permitido alterar sua senha.<br/><br/> 
-					Preencha o formulario abaixo e a equipe Conta Comigo entrar· em contato pelo email / telefone, informado abaixo.
+				<p>Por quest√µes de seguranca, n√£o √© permitido alterar sua senha.<br/><br/> 
+					Preencha o formulario abaixo e a equipe Conta Comigo entrar√° em contato pelo email / telefone, informado abaixo.
 				</p>
 			</div>
 			
@@ -34,7 +34,7 @@
 				<input type="number" placeholder=" Telefone" name="telephone">
 				<div class="spacer_1"></div>
 				
-				<input type="text" placeholder=" Empresa (nome do hospital, clÌnica, etc)" name="company">
+				<input type="text" placeholder=" Empresa (nome do hospital, cl√≠nica, etc)" name="company">
 				<div class="spacer_1"></div>
 				
 				<input type="submit"  value="Enviar" name="btn_changepassword" class="btn"><br/>

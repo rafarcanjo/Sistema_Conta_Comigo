@@ -8,29 +8,24 @@
 </head>
 <body>
 	<!-- Container 100% -->
-	<div class="container_login">			
-		<div class="spacer_7"></div>
-				
-		<!-- Login Box -->
-		<div class="box_1">				
-			<div class="spacer_4"></div>
-			
-			<!-- Logo Conta Comigo -->
-			<div><img id="img_login" src="img_files/Logo-Conta-Comigo-Vertical.png"></div>						
-			<div class="spacer_3"></div>
-			
-			<!-- Login Form -->
-			<form method="get" action="home.php">		
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 offset-md-4 bg-white rounded shadow border mt-5 p-3">
+				<img id="img_login" class="mx-auto d-block m-2" src="img_files/Logo-Conta-Comigo-Vertical.png">
+				<form method="get" action="home.php">		
+						
+					<input type="text" placeholder=" Usuario" name="login">				
+					<div class="spacer_2"></div>
+									
+					<input type="password" placeholder=" Senha" name="password">				
+					<div class="spacer_2"></div>
 					
-				<input type="text" placeholder=" Usuario" name="login">				
-				<div class="spacer_2"></div>
-								
-				<input type="password" placeholder=" Senha" name="password">				
-				<div class="spacer_2"></div>
+					<input type="submit" value="Entrar" name="btn_login" class="btn"><br/>
+				</form>
+			</div>
+		</div>
+	</div>
 				
-				<input type="submit" value="Entrar" name="btn_login" class="btn"><br/>
-			</form>
-		</div>			
 		<div class="spacer_7"></div>
 		 
 		<!-- Box Footer -->

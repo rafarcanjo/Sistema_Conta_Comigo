@@ -5,8 +5,7 @@
 
 	<!-- Container 100% -->
 	<div class="container_system">
-        
-        <!-- CPF input + CPF Status -> Row 1 -->
+         <!-- CPF input + CPF Status -> Row 1 -->
         <div class="box_3">
         <div class="spacer_2"></div>
         

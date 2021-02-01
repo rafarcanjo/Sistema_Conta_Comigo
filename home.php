@@ -3,35 +3,55 @@
 	include 'structure_files/header.html';	
 ?>	
 
-	<!-- Container 100% -->
-	<div class="container_static">
-	<div class="spacer_6"></div><div class="spacer_2"></div>
-	<div class="vspacer_6"></div><div class="vspacer_2"></div>
-		
+<div class="container-fluid bg-light">
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="mb-5">Sistema Online Conta Comigo</h1>
+			</div>
+		</div>
+
 		<!-- Box Schedule -->
-		<div class="box_2">
-			<label class="label_1">Agenda de<br/> Consultas</label>
-			
-			<!-- Image Box Schedule -->
-			<img id="img_schedule" src="img_files/schedule.png">
-			
-			<!-- Button Schedules -->
-			<a href="appointmentschedule.php" style="text-decoration: none;" type="submit"><button type="submit" class="btn" value="Consultar Agenda" formaction="">Consultar Agenda</button></a>
+		<div class="row">
+			<div class="col-lg-6 col-md-6">
+				<div class="bg-white border rounded shadow p-5 text-center mb-4 d-grid gap-2">
+					<h2><label class="label_1">Agenda de Consultas</label></h2>
+					
+					<!-- Calendar Icon -->
+					<div class="d-md-block d-sm-none d-none m-4">
+						<i class="far fa-calendar-alt fa-6x"></i>
+					</div>
+					<div class="d-sm-block d-md-none m-4">
+						<i class="far fa-calendar-alt fa-4x"></i>
+					</div>
+					
+					<!-- Button Schedules -->
+					<a href="appointmentschedule.php" style="text-decoration: none;" type="submit"><button type="submit" class="btn" value="Consultar Agenda" formaction="">Consultar Agenda</button></a>
+				</div>
+			</div>
+
+			<!-- Box Register -->
+			<div class="col-lg-6 col-md-6">
+				<div class="bg-white border rounded shadow p-5 text-center mb-4 d-grid gap-2">
+					<h2><label class="label_1">Situação Cadastral do Portador</label></h2>
+					
+					<!-- User Check Icon -->
+					<div class="d-md-block d-sm-none d-none m-4">
+						<i class="fa fa-user-check fa-6x"></i>
+					</div>
+					<div class="d-sm-block d-md-none m-4">
+						<i class="fa fa-user-check fa-4x"></i>
+					</div>
+					
+					<!-- Button Registers -->
+					<a href="portadorconsultation.php" class="btn btn-primary btn-lg" type="submit">Consultar portador</a>
+				</div>
+			</div>
 		</div>
-		<div class="vspacer_3"></div>
-		
-		<!-- Box Register -->
-		<div class="box_2">
-			<label class="label_1">Situa&ccedil;&atilde;o Cadastral<br/> do Portador</label>
-			
-			<!-- Image Box Register -->
-			<img id="img_register" src="img_files/paciente.png">
-			
-			<!-- Button Registers -->
-			<a href="portadorconsultation.php" style="text-decoration: none;" type="submit"><button class="btn">Consultar Portador</button></a>
-		</div>
-	</div>	
-	<div class="spacer_6"></div><div class="spacer_1"></div>
+	</div>
+	<div><br><br><br></div>
+</div>
+	
 		
 <!-- Include Footer -->
 <?php 

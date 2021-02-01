@@ -25,11 +25,7 @@
 
 /* Login Page / Send Verification Page */
 #img_login{	
-	height: 200px;
-	
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+	max-width: 200px;
 }
 
 .img_selected{	

@@ -4,7 +4,6 @@
 	margin: 0px;
 	
 	display: block;
-	background-color: #f8f8FF;
 }
 
 
@@ -33,7 +32,7 @@
 }
 
 /* Health Suitcase logo */
-#div_logoheader{		
+/* #div_logoheader{		
 	padding-top: 25px;
 	padding-right: 35px;
     display: block;
@@ -42,4 +41,4 @@
 
 #logo_header{
 	width: 30px;
-}
+} */

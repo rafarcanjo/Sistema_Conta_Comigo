@@ -1,0 +1,153 @@
+
+/* Every Body */
+body{
+	margin:0px;
+}
+
+/* Every Input */
+input{
+	width: 250px;
+	height: 30px;
+	
+    display: block;
+    margin-left: auto;
+    margin-right: auto;		
+}
+
+.input_2{
+	width: 160px;
+	height: 30px;
+	float:left;	
+}
+
+/* Every Buttons */
+.btn{
+	width: 260px;
+	height: 30px;
+	
+	background-color: #F58323;
+	border: none;
+	color: white;
+	
+    display: block;
+    margin-left: auto;
+    margin-right: auto;	
+}
+
+.btn_2{
+	width: 130px;
+	height: 35px;
+	
+	background-color: #F58323;
+	border: none;
+	color: white;
+	
+    display: block;
+    margin-left: auto;
+    margin-right: auto;	
+    float:left;
+}
+
+/* Container -> System */
+.container_system{	
+	width: 100vw;
+	height: 580px;
+	background-color: #FFFFFF;
+	
+	display: block;	
+}
+
+/* Container -> Login */
+.container_login{	
+	width: 100vw;
+	height: 100vh;
+	background-color: #E6E8F4;
+	
+	display: block;	
+}
+
+/* Box 1 -> Login / Password / Requests */
+.box_1{		
+    margin-left: 33%;   
+	width: 350px;
+	height: 450px;
+	background-color: white; 
+}
+
+/* Box 2 -> Home */
+.box_2{
+	width: 340px;
+	height: 420px;
+	display: block;
+	float: left;
+	padding-top: 35px;
+	
+	border-style: groove;
+	
+	text-align: center;
+}
+
+/* Box 3 -> split the screen */
+.box_3{
+	width: 40%;
+	height: 250px;
+	display: block;
+	float: left;
+}
+
+/* Box 4 -> Status of Portador */
+.box_4{
+	width: 150px;
+	height: 80px;
+	display: block;
+	float: left;
+	
+	border: groove;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+/* Box Footer -> Login / Forgot Password / Change Submitted */
+.box_footer{	
+    display: block;
+    margin-left: 31%;    	
+}
+
+.link_footer{
+	width: 200px;
+	height: 30px;
+	
+	display: block;
+	float: left;
+}
+
+/* Horizontal Spacers -> */
+.spacer_1{	height: 10px;}
+
+.spacer_2{	height: 20px;}
+
+.spacer_3{	height: 30px;}
+
+.spacer_4{	height: 40px;}
+
+.spacer_5{	height: 50px;}
+
+.spacer_6{	height: 100px;}
+
+.spacer_7{	height: 150px;}
+
+/* Vertical Spacers -> */
+.vspacer_1{	width: 10px; height: 50px; display:block; float: left;}
+
+.vspacer_2{	width: 20px; height: 50px; display:block; float: left;}
+
+.vspacer_3{	width: 40px; height: 50px; display:block; float: left;}
+
+.vspacer_4{	width: 50px; height: 50px; display:block; float: left;}
+
+.vspacer_5{	width: 100px; height: 100px; display:block; float: left;}
+
+.vspacer_6{	width: 200px; height: 100px; display:block; float: left;}
+
+.vspacer_7{	width: 300px; height: 100px; display:block; float: left;}

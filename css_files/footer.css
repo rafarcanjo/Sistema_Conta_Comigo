@@ -1,0 +1,26 @@
+/* Footer */
+#footer{
+	height: 80px;
+	margin: 0px;
+	
+	display: block;
+	background-color: #f8f8FF;
+}
+
+
+/* System Name - Footer */
+#div_systemfooter{	
+	width: 300px;
+	padding-left: 15px;
+		
+	display: block;
+    float: left;
+	
+}
+
+/* Developer Lable - Footer */
+#div_developerfooter{
+	padding-right: 35px;
+    display: block;
+    float: right;
+}

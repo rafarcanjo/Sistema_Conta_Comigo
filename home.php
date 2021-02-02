@@ -26,7 +26,7 @@
 					</div>
 					
 					<!-- Button Schedules -->
-					<a href="appointmentschedule.php" style="text-decoration: none;" type="submit"><button type="submit" class="btn" value="Consultar Agenda" formaction="">Consultar Agenda</button></a>
+					<a href="appointmentschedule.php" style="text-decoration: none;" type="submit" class="btn btn-primary btn-lg">Consultar Agenda</a>
 				</div>
 			</div>
 

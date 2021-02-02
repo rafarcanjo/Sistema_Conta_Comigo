@@ -25,7 +25,8 @@
 
 /* Login Page / Send Verification Page */
 #img_login{	
-	max-width: 200px;
+    max-width: 280px;
+    width: 100%;
 }
 
 .img_selected{	

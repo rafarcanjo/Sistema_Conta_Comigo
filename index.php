@@ -3,7 +3,8 @@
 <head>
 	<!-- Include Header -->
 	<?php 
-		include 'structure_files/link.html';	
+		include 'structure_files/link.html';
+		include 'php_files/conect.php';
 	?>
 </head>
 	<body class="bg-purple bg-overlay-worldmap"> 

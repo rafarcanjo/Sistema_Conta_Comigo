@@ -3,7 +3,17 @@
 <head>
 	<!-- Include Header -->
 	<?php 
-		include 'structure_files/link.html';	
+		include 'structure_files/link.html';
+		
+		
+		if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true))
+		{
+		    unset($_SESSION['email']);
+		    unset($_SESSION['password']);
+		    header('location:index.php');
+		}
+		
+		$logado = $_SESSION['email'];
 	?>
 </head>
 <body>

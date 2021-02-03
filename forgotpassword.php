@@ -28,25 +28,26 @@
 						<hr>
 						<p>Preencha o formulario abaixo e a equipe Conta Comigo entrará em contato pelo email / telefone, informado abaixo.</p>
 						
-						<form method="get" action="changesubmitted.php" class="d-grid gap-2">		
+						<!-- data for sending email -->
+						<form method="post" action="php_files/mail_files/mail.php" class="d-grid gap-2">		
 							<div>
 								<label class="form-label" for="name">Nome</label>
-								<input class="form-control" type="text" name="name" id="name">
+								<input class="form-control" maxlength="50" type="text" name="name" id="name">
 							</div>
 
 							<div>
 								<label class="form-label" for="email">E-mail</label>
-								<input class="form-control" type="text" name="email" id="email">
+								<input class="form-control" maxlength="40" type="text" name="email" id="email">
 							</div>
 							
 							<div>
 								<label class="form-label" for="phone">Telefone</label>
-								<input class="form-control" type="number" name="phone" id="phone">
+								<input class="form-control" type="number" name="phone" maxlength="15" id="phone">
 							</div>	
 
 							<div class="mb-3">
 								<label class="form-label" for="phone">Empresa:</label>
-								<input class="form-control" type="text" placeholder="Nome do hospital, clínica, etc" name="company" id="company">
+								<input class="form-control" type="text" maxlength="50" placeholder="Nome do hospital, clínica, etc" name="company" id="company">
 							</div>	
 							
 							<button type="submit" value="Enviar" name="btn_changepassword" class="btn btn-primary">Enviar solicitação</button>

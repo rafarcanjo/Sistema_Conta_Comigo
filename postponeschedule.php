@@ -1,6 +1,6 @@
 <!-- Include Header -->
 <?php 
-	include 'structure_files/header.html';	
+	include 'structure_files/header.php';	
 ?>
 
 	<!-- Container 100% -->

@@ -5,7 +5,7 @@
 	<?php 
 		include 'structure_files/link.html';
 		
-		
+		session_start();
 		if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true))
 		{
 		    unset($_SESSION['email']);
@@ -32,12 +32,12 @@
 				<div class="d-flex">
 					<!-- Corporation name -->
 					<div class="d-inline pt-1">
-						<span class="me-2 text-muted">Hospital Bethesda</span>
+						<span class="me-2 text-muted"><?php echo $logado; ?></span>
 					</div>
 
 					<!-- Health logo -->
 					<div class="d-inline">
-						<a href="index.php"><i class="fas fa-briefcase fa-2x text-muted"></i></a>
+						<a href="index.php"><i class="fas fa-briefcase fa-2x text-muted"><?php session_destroy(); ?></i></a>
 					</div>
 				</div>
 		  	</div>

@@ -44,6 +44,7 @@ $email = $password = "";
                                 if(mysqli_num_rows ($result_password) > 0 ){
                                     $_SESSION['password'] = $password;
                                     $_SESSION['email'] = $email;
+                                    $_SESSION['autenticado'] = true;
                                     
                                     //Redirect to Home -> Login Success
                                     header('location:home.php');

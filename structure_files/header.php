@@ -4,16 +4,18 @@
 	<!-- Include Header -->
 	<?php 
 		include 'structure_files/link.html';
-		
+		//and (!isset ($_SESSION['password']) == true)
+        
 		session_start();
-		if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true))
+		if((!isset ($_SESSION['autenticado']) == true))
 		{
 		    unset($_SESSION['email']);
 		    unset($_SESSION['password']);
 		    header('location:index.php');
 		}
-		
-		$logado = $_SESSION['email'];
+		else{
+		  $logado = $_SESSION['email'];
+		}
 	?>
 </head>
 <body>
@@ -37,10 +39,10 @@
 
 					<!-- Health logo -->
 					<div class="d-inline">
-						<a href="index.php"><i class="fas fa-briefcase fa-2x text-muted"><?php session_destroy(); ?></i></a>
+						<a href="php_files/logout.php"><i class="fas fa-briefcase fa-2x text-muted"></i></a>
 					</div>
 				</div>
 		  	</div>
 		</div>
 	</nav>
-	
+	;;

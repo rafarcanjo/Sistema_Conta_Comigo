@@ -32,7 +32,8 @@
                 if ($sql_linha = mysqli_query($mysqli, "SELECT value FROM wp_cf_form_entry_values WHERE entry_id like '$entry_id'")) {
                     
                     //adiciona dados ao array
-                    while ($registro2 = mysqli_fetch_assoc($sql_linha))
+                    while ($registro2 = 
+                    ($sql_linha))
                     {
                         $consulta[$x] = ($registro2['value']);
                         $x++;

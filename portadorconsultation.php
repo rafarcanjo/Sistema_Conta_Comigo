@@ -1,140 +1,146 @@
 <!-- Include Header -->
 <?php 
-	include 'structure_files/header.html';	
+	include 'structure_files/header.php';	
 ?>
 
 	<!-- Container 100% -->
-	<div class="container_system">
-         <!-- CPF input + CPF Status -> Row 1 -->
-        <div class="box_3">
-        <div class="spacer_2"></div>
-        
-        	<!-- Label -->
-        	<div class="box_4">
-        		<h2>Preencha o CPF do portador abaixo para<br/> consultar sua situa&ccedil;&atilde;o cadastral</h2>
-        		<div class="spacer_2"></div>
-        		
-        		<!-- CPF Input Form -->
-        		<form method="get" action="">
-        			<label class="label_2">CPF do portador:</label><br/><br/>
-        			<input type="number" placeholder=" 999.999.999-99" name="cpf_portador" class="input_2">
-        			
-        			<div class="vspacer_2"></div>
-        			<input type="submit" maxlength="14" value="Pesquisar" name="btn_cpf" class="btn_2"><br/>
-        		</form>
-        	</div>
-        	
-        	<!-- Status Box -->
-        	<div class="box_4">
-        		<div class="spacer_5"></div><div class="vspacer_5"></div>
-        		<div class="box_6">
-        			<label>Status do<br/>Cadastro</label>
-        		</div>	
-        	</div>
+	
+	<div class="container">
+		<div class="row my-5 my-sm-2">
+			<div class="col-md-6">
+				<h1 class="mb-3">Situação cadastral do Portador</h1>
+			</div>
+			<div class="col-md-6">
+				<p>Preencha o CPF do portador abaixo para consultar a situação cadastral dele no sistemas da Conta Comigo. <span class="text-muted">Para facilitar, também mostraremos abaixo se esse portador possui alguma consulta agendada.</sapi_windows_cp_is_utf8></p>
+			</div>
 		</div>
-		
-		<!-- Scheduled Appointments -> Row -->
-        <div class="box_3"><hr>
-        <div class="spacer_2"></div>
-        
-        	<!-- Pacient Information -->
-        	<div class="box_5">        	
-        		<!-- Name Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">Nome do Portador:</label><br/>
-        			<p>Antonio Jose Carlos Silva</p>
-        		</div>
-        		<!-- CPF Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">CPF:</label><br/>
-        			<p>098.470.629-19</p>
-        		</div>
-        		<!-- Contato Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">Telefone</label><br/>
-        			<p>(47)9.9959-6107</p>
-        		</div>        		
-        	</div>
-        	
-        	<!-- Schedule Information -->
-        	<div class="box_5">        	
-        		<!-- Name Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">Hospital:</label><br/>
-        			<p>Bethesda</p>
-        		</div>
-        		<!-- CPF Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">Especialidade:</label><br/>
-        			<p>Cardiologia</p>
-        		</div>
-        		<!-- Contato Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">M&eacute;dico:</label><br/>
-        			<p>Dr. Fabio Petry</p>
-        		</div>        		
-        	</div>        	
-        	
-        	<!-- Status Div -->
-        	<div class="box_5">
-        		<div class="box_6">
-        			<label>22/01/2021</label><br/>
-        			<label>17:00 horas</label>
-        		</div>	
-        	</div>
-        </div>
-        	
-        <!-- Scheduled Appointments -> Row -->
-        <div class="box_3"><hr>
-        <div class="spacer_2"></div>
-        
-        	<!-- Pacient Information -->
-        	<div class="box_5">        	
-        		<!-- Name Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">Nome do Portador:</label><br/>
-        			<p>Antonio Jose Carlos Silva</p>
-        		</div>
-        		<!-- CPF Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">CPF:</label><br/>
-        			<p>098.470.629-19</p>
-        		</div>
-        		<!-- Contato Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">Telefone</label><br/>
-        			<p>(47)9.9959-6107</p>
-        		</div>        		
-        	</div>
-        	
-        	<!-- Schedule Information -->
-        	<div class="box_5">        	
-        		<!-- Name Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">Hospital:</label><br/>
-        			<p>Bethesda</p>
-        		</div>
-        		<!-- CPF Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">Especialidade:</label><br/>
-        			<p>Cardiologia</p>
-        		</div>
-        		<!-- Contato Cell -->
-        		<div class="cell_1">
-        			<label class="label_2">M&eacute;dico:</label><br/>
-        			<p>Dr. Fabio Petry</p>
-        		</div>        		
-        	</div>        	
-        	
-        	<!-- Status Div -->
-        	<div class="box_5">
-        		<div class="box_6">
-        			<label>22/01/2021</label><br/>
-        			<label>17:00 horas</label>
-        		</div>	
-        	</div>       	
-        </div>
-        
+		<div class="row mb-5 align-items-center">
+			<div class="col-md-6 mb-5">
+				<form method="get" action="">
+					<div class="row">
+						<label class="col-form-label" for="cpf">Filtrar por Paciente:</label>
+					</div>
+					<div class="row">
+						<div class="col-auto">
+							<input type="text" class="form-control form-control-lg" placeholder="000.000.000-00" id="cpf"/>
+						</div>
+						<div class="col-auto">
+							<button type="submit" name="btn_choosedata" value="Pesquisar" class="btn btn-outline-primary btn-lg"><i class="fas fa-search"></i> Pesquisar</button>
+						</div>
+					</div>
+        		</form>
+			</div>
+			<div class="col-md-6">
+				<h3 class="mb-3">Status do Cadastro</h3>
+
+				<!--CADASTRO HABILITADO-->
+				<div class="alert alert-success" role="alert">
+					<p class="fs-5 lead"><i class="fas fa-check"></i> Esse portador está habilitado.</p>
+					<hr>
+					Isso significa que ele poderá desfrutar de todos os benefícios da Conta Comigo.
+				</div>
+
+				<!--CADASTRO DESABILITADO-->
+				<div class="alert alert-danger" role="alert">
+					<p class="fs-5 lead"><i class="fas fa-times"></i> Infelizmente o cadastro do paciente esta inativo. </p>
+					<hr>
+					<p>Isso significa que ele não pode desfrutar dos benefícios da Conta Comigo.<br>Informe para o paciente, o contato do nosso SAC, para regularizarmos a situação.</p>
+					<hr>
+					<p class="fs-4 fs-bold">SAC Conta Comigo</p><p><i class="fas fa-phone"></i> 0800-610-5665
+					<br>
+					<i class="fas fa-envelope"></i> contato@contacomigo.org
+					</p>
+
+				</div>
+	
+			</div>
+		</div>
+	</div>
+
+	<div class="container bg-light rounded border py-3 px-4 mb-5">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="mb-3">Informações do Portador</h2>
+				<ul class="list-group list-group-horizontal-md mb-3">
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">Nome:</small><br>
+						<span class="text-uppercase">Antonio Jose Carlos Silva</span>
+					</li>
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">CPF:</small><br>
+						<span class="text-uppercase">098.470.629-19</span>
+					</li>
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">Telefone:</small><br>
+						<span class="text-uppercase">(47)9.9959-6107</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container bg-light rounded border py-3 px-4 mb-5">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Resultados da Agenda</h2>
+			</div>
+		</div>
+
+
+		<div class="row border rounded p-4 bg-white my-3">
+			<div class="col-md-8 mb-3">
+				<h3>Informações da consulta</h3>
+				<ul class="list-group list-group-horizontal-md">
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">Hospital:</small><br>
+						<span class="text-uppercase">Bethesda</span>
+					</li>
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">Especialidade:</small><br>
+						<span class="text-uppercase">Cardiologia</span>
+					</li>
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">Médico:</small><br>
+						<span class="text-uppercase">Dr. Fábio petry</span>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Data e hora desejada</h3>
+				<div class="alert alert-success" role="alert">
+					<div class="d-inline me-3"><i class="far fa-calendar-alt"></i> 22/01/2021</div>
+					<div class="d-inline"><i class="far fa-clock"></i> 17:00 horas</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row border rounded p-4 bg-white my-3">
+			<div class="col-md-8 mb-3">
+				<h3>Informações da consulta</h3>
+				<ul class="list-group list-group-horizontal-md">
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">Hospital:</small><br>
+						<span class="text-uppercase">Bethesda</span>
+					</li>
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">Especialidade:</small><br>
+						<span class="text-uppercase">Cardiologia</span>
+					</li>
+					<li class="list-group-item flex-fill">
+						<small class="fw-bold">Médico:</small><br>
+						<span class="text-uppercase">Dr. Fábio petry</span>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Data e hora desejada</h3>
+				<div class="alert alert-warning" role="alert">
+					<div class="d-inline me-3"><i class="far fa-calendar-alt"></i> 22/01/2021</div>
+					<div class="d-inline"><i class="far fa-clock"></i> 17:00 horas</div>
+				</div>
+			</div>
+		</div>	
 	</div>
 	
 <!-- Include Footer -->

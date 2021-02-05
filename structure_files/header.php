@@ -3,7 +3,19 @@
 <head>
 	<!-- Include Header -->
 	<?php 
-		include 'structure_files/link.html';	
+		include 'structure_files/link.html';
+		//and (!isset ($_SESSION['password']) == true)
+        
+		session_start();
+		if((!isset ($_SESSION['autenticado']) == true))
+		{
+		    unset($_SESSION['email']);
+		    unset($_SESSION['password']);
+		    header('location:index.php');
+		}
+		else{
+		  $logado = $_SESSION['email'];
+		}
 	?>
 </head>
 <body>
@@ -22,15 +34,14 @@
 				<div class="d-flex">
 					<!-- Corporation name -->
 					<div class="d-inline pt-1">
-						<span class="me-2 text-muted">Hospital Bethesda</span>
+						<span class="me-2 text-muted"><?php echo $logado; ?></span>
 					</div>
 
 					<!-- Health logo -->
 					<div class="d-inline">
-						<a href="index.php"><i class="fas fa-briefcase fa-2x text-muted"></i></a>
+						<a href="php_files/logout.php"><i class="fas fa-briefcase fa-2x text-muted"></i></a>
 					</div>
 				</div>
 		  	</div>
 		</div>
 	</nav>
-	

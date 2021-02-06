@@ -3,147 +3,327 @@
 include 'php_files/conect.php';
 
 // Defining Variables
-$date_err = $date_err2 = "";
-//$cpf = $company = $doctor = $date = $start_hour = $end_hour = $is_confirmed = "";
-//$name_doctor = $name_holder = $name_hospital = "";
-//$phone_holder = $id_appointment = $id_doctor = $id_hospital = $id_ortopedy = $id_specialty = "";
+$cpf_err = $date_err = $date_err2 = "";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     
-    // Test if is empty
-    if (empty($_POST["date_schedule"])) {
-        $date_err = "Selecione a Data";
-        
-    }else {
+    // Test if isnt empty
+    if (!empty($_POST["cpf_schedule"])) {
         //Aplicate Function Test Input
-        $date_schedule = test_input($_POST["date_schedule"]);
+        $cpf_schedule = test_input($_POST["cpf_schedule"]);
         
-        /////////// Search Date in the database
-        if ($result_date = mysqli_query($mysqli, "SELECT * FROM appointments WHERE `date` like '$date_schedule'")){
+        /////////// Search CPF in the database
+        if ($result_cpf = mysqli_query($mysqli, "SELECT * FROM appointments WHERE `cpf` like '$cpf_schedule'")){
             
             //Email and Password = Invalid
-            if((mysqli_num_rows ($result_date) < 1 )){
-                $date_err2 = "Nenhum Registro Encontrado";
-                header('location: /../Sistema_ContaComigo/appointmentschedule.php');
+            if((mysqli_num_rows ($result_cpf) < 1 )){
+                $cpf_err2 = "Nenhum Registro Encontrado";
                 
                 //Cleaning mysqli
-                mysqli_free_result($result_date);
+                mysqli_free_result($result_cpf);
             }else{
-                $count = mysqli_num_rows($result_date);
-                while($linha = mysqli_fetch_array($result_date)){
-                    $id_appointment = ($linha["id_appointment"]);
-                    $cpf_bd = $linha["cpf"];
-                    $id_hospital = $linha["id_company"];
-                    $id_doctor = $linha["id_doctor"];
-                    $date = $linha["date"];
-                    $start_hour = $linha["start_hour"];
-                    $end_hour = $linha["end_hour"];
-                    $is_confirmed = $linha["is_confirmed"];
+                //Defining Count
+                $count = mysqli_num_rows($result_cpf);
+                $count7 = $count8 = $count9 = $count10 = $count11 = $count12 = $count;
+                
+                while($linha = mysqli_fetch_assoc($result_cpf)){
+                    $id_appointment[$count7] = ($linha["id_appointment"]);
+                    $cpf_bd[$count7] = $linha["cpf"];
+                    $id_hospital[$count7] = $linha["id_company"];
+                    $id_doctor[$count7] = $linha["id_doctor"];
+                    $date[$count7] = $linha["date"];
+                    $start_hour[$count7] = $linha["start_hour"];
+                    $end_hour[$count7] = $linha["end_hour"];
+                    $is_confirmed[$count7] = $linha["is_confirmed"];
+                    
+                    $count7--;
                 }
                 
                 //Cleaning mysqli
-                mysqli_free_result($result_date);
-                
-                /////////// Search CPF
-                if ($result_cpf = mysqli_query($mysqli, "SELECT name, phone FROM holder WHERE `cpf` like '$cpf_bd'")){
+                mysqli_free_result($result_cpf);
+            }
+            
+            /////////// Search USER
+            while ($count8>0){
+                if ($result_user = mysqli_query($mysqli, "SELECT name, phone FROM holder WHERE `cpf` like '$cpf_bd[$count8]'")){
                     
                     //Email and Password = Invalid
-                    if((mysqli_num_rows ($result_cpf) < 1 )){
+                    if((mysqli_num_rows ($result_user) < 1 )){
                         $date_err2 = "Nenhum Portador Encontrado";
                         
                         //Cleaning mysqli
-                        mysqli_free_result($result_cpf);
+                        mysqli_free_result($result_user);
                     }else{
-                        while($linha_holder = mysqli_fetch_array($result_cpf)){
-                            $name_holder = $linha_holder["name"];
-                            $phone_holder = $linha_holder["phone"];
+                        $linha_holder = mysqli_fetch_assoc($result_user);
+                        $name_holder[$count8] = $linha_holder["name"];
+                        $phone_holder[$count8] = $linha_holder["phone"];
+                    }
+                    
+                    //Cleaning mysqli
+                    mysqli_free_result($result_user);
+                    
+                }else{  echo "Falha na consulta do Portador"; exit();}
+                $count8--;
+            }
+            
+            
+            /////////// Search Doctor
+            while($count9>0){
+                if ($result_doctor = mysqli_query($mysqli, "SELECT name,id_specialty,id_ortopedy FROM doctors WHERE `id_doctor` like '$id_doctor[$count9]'")){
+                    
+                    //Email and Password = Invalid
+                    if((mysqli_num_rows ($result_doctor) < 1 )){
+                        $date_err2 = "Nenhum Doutor Encontrado";
+                        
+                        //Cleaning mysqli
+                        mysqli_free_result($result_doctor);
+                    }else{
+                        $linha_doctor = mysqli_fetch_assoc($result_doctor);
+                        $name_doctor[$count9] = $linha_doctor["name"];
+                        $id_specialty[$count9] = $linha_doctor["id_specialty"];
+                        $id_ortopedy[$count9] = $linha_doctor["id_ortopedy"];
+                    }
+                    
+                    //Cleaning mysqli
+                    mysqli_free_result($result_doctor);
+                    
+                }else{  echo "Falha na consulta do Doutor"; exit();}
+                $count9--;}
+                
+                
+                /////////// Search Company
+                while($count10>0){
+                    if ($result_hospital = mysqli_query($mysqli, "SELECT company_name FROM company WHERE `id_company` like '$id_hospital[$count10]'")){
+                        
+                        //Email and Password = Invalid
+                        if((mysqli_num_rows ($result_hospital) < 1 )){
+                            $date_err2 = "Nenhum Hospital Encontrado";
+                            //Cleaning mysqli
+                            mysqli_free_result($result_hospital);
+                            
+                        }else{
+                            $linha_hospital = mysqli_fetch_assoc($result_hospital);
+                            $name_hospital[$count10] = $linha_hospital["company_name"];
+                        }
+                        
+                        //Cleaning mysqli
+                        mysqli_free_result($result_hospital);
+                        
+                    }else{  echo "Falha na consulta do Hospital"; exit();}
+                    $count10--;}
+                    
+                    
+                    /////////// Search Specialty
+                    while($count11>0){
+                        if ($result_specialty = mysqli_query($mysqli, "SELECT name FROM specialties WHERE `id_specialty` like '$id_specialty[$count11]'")){
+                            
+                            //Email and Password = Invalid
+                            if((mysqli_num_rows ($result_specialty) < 1 )){
+                                $date_err2 = "Nenhuma Especialidade Encontrada";
+                                
+                                //Cleaning mysqli
+                                mysqli_free_result($result_specialty);
+                                
+                            }else{
+                                $linha_specialty = mysqli_fetch_assoc($result_specialty);
+                                $specialty[$count11] = $linha_specialty["name"];
+                            }
+                            //Cleaning mysqli
+                            mysqli_free_result($result_specialty);
+                            
+                        }else{  echo "Falha na consulta da Especialidade"; exit();}
+                        $count11--;}
+                        
+                        
+                        /////////// Search Ortopedy Specialty
+                        if ($id_ortopedy != 0){
+                            while($count12>0){
+                                if ($result_ortopedy = mysqli_query($mysqli, "SELECT ortopedy_specialty FROM ortopedy WHERE `id_ortopedy` like '$id_ortopedy[$count12]'")){
+                                    
+                                    //Email and Password = Invalid
+                                    if((mysqli_num_rows ($result_ortopedy) < 1 )){
+                                        
+                                        //Cleaning mysqli
+                                        mysqli_free_result($result_ortopedy);
+                                    }else{
+                                        $linha_ortopedy = mysqli_fetch_assoc($result_ortopedy);
+                                        $ortopedy_specialty[$count12] = $linha_ortopedy["ortopedy_specialty"];
+                                    }
+                                    
+                                }else{  echo "Falha na consulta da Especialidade Óssea"; exit();}
+                                $count12--;}
+                        }else {}
+                        
+                        //Close Search in database
+        }else{  echo "Falha na consulta do Banco"; exit();}
+        
+        //Close IF "Not Empty cpf"
+    }else {
+        
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        // Test if isnt empty
+        if (!empty($_POST["date_schedule"])) {
+            
+            //Aplicate Function Test Input
+            $date_schedule = test_input($_POST["date_schedule"]);
+            
+            /////////// Search Date in the database
+            if ($result_date = mysqli_query($mysqli, "SELECT * FROM appointments WHERE `date` like '$date_schedule'")){
+                
+                //Email and Password = Invalid
+                if((mysqli_num_rows ($result_date) < 1 )){
+                    $date_err2 = "Nenhum Registro Encontrado";
+                    header('location: /../Sistema_ContaComigo/appointmentschedule.php');
+                    
+                    //Cleaning mysqli
+                    mysqli_free_result($result_date);
+                }else{
+                    //Defining Count
+                    $count = mysqli_num_rows($result_date);
+                    $count1 = $count2 = $count3 = $count4 = $count5 = $count6 = $count;
+                    
+                    while($linha = mysqli_fetch_assoc($result_date)){
+                        $id_appointment[$count1] = ($linha["id_appointment"]);
+                        $cpf_bd[$count1] = $linha["cpf"];
+                        $id_hospital[$count1] = $linha["id_company"];
+                        $id_doctor[$count1] = $linha["id_doctor"];
+                        $date[$count1] = $linha["date"];
+                        $start_hour[$count1] = $linha["start_hour"];
+                        $end_hour[$count1] = $linha["end_hour"];
+                        $is_confirmed[$count1] = $linha["is_confirmed"];
+                        
+                        $count1--;
+                    }
+                    
+                    //Cleaning mysqli
+                    mysqli_free_result($result_date);
+                    $x = 0;
+                }
+                
+                
+                /////////// Search CPF
+                while ($count2>0){
+                    if ($result_cpf = mysqli_query($mysqli, "SELECT name, phone FROM holder WHERE `cpf` like '$cpf_bd[$count2]'")){
+                        
+                        //Email and Password = Invalid
+                        if((mysqli_num_rows ($result_cpf) < 1 )){
+                            $date_err2 = "Nenhum Portador Encontrado";
+                            
+                            //Cleaning mysqli
+                            mysqli_free_result($result_cpf);
+                        }else{
+                            $linha_holder = mysqli_fetch_assoc($result_cpf);
+                            $name_holder[$count2] = $linha_holder["name"];
+                            $phone_holder[$count2] = $linha_holder["phone"];
                         }
                         
                         //Cleaning mysqli
                         mysqli_free_result($result_cpf);
                         
-                        /////////// Search Doctor
-                        if ($result_doctor = mysqli_query($mysqli, "SELECT name,id_specialty,id_ortopedy FROM doctors WHERE `id_doctor` like '$id_doctor'")){
+                    }else{  echo "Falha na consulta do Portador"; exit();}
+                    $count2--;
+                }
+                
+                
+                /////////// Search Doctor
+                while($count3>0){
+                    if ($result_doctor = mysqli_query($mysqli, "SELECT name,id_specialty,id_ortopedy FROM doctors WHERE `id_doctor` like '$id_doctor[$count3]'")){
+                        
+                        //Email and Password = Invalid
+                        if((mysqli_num_rows ($result_doctor) < 1 )){
+                            $date_err2 = "Nenhum Doutor Encontrado";
+                            
+                            //Cleaning mysqli
+                            mysqli_free_result($result_doctor);
+                        }else{
+                            $linha_doctor = mysqli_fetch_assoc($result_doctor);
+                            $name_doctor[$count3] = $linha_doctor["name"];
+                            $id_specialty[$count3] = $linha_doctor["id_specialty"];
+                            $id_ortopedy[$count3] = $linha_doctor["id_ortopedy"];
+                        }
+                        
+                        //Cleaning mysqli
+                        mysqli_free_result($result_doctor);
+                        
+                    }else{  echo "Falha na consulta do Doutor"; exit();}
+                    $count3--;}
+                    
+                    
+                    /////////// Search Company
+                    while($count4>0){
+                        if ($result_hospital = mysqli_query($mysqli, "SELECT company_name FROM company WHERE `id_company` like '$id_hospital[$count4]'")){
                             
                             //Email and Password = Invalid
-                            if((mysqli_num_rows ($result_doctor) < 1 )){
-                                $date_err2 = "Nenhum Doutor Encontrado";
-                                
+                            if((mysqli_num_rows ($result_hospital) < 1 )){
+                                $date_err2 = "Nenhum Hospital Encontrado";
                                 //Cleaning mysqli
-                                mysqli_free_result($result_doctor);
+                                mysqli_free_result($result_hospital);
+                                
                             }else{
-                                while($linha_doctor = mysqli_fetch_array($result_doctor)){
-                                    $name_doctor = $linha_doctor["name"];
-                                    $id_specialty = $linha_doctor["id_specialty"];
-                                    $id_ortopedy = $linha_doctor["id_ortopedy"];
-                                }
+                                $linha_hospital = mysqli_fetch_assoc($result_hospital);
+                                $name_hospital[$count4] = $linha_hospital["company_name"];
+                            }
+                            
+                            //Cleaning mysqli
+                            mysqli_free_result($result_hospital);
+                            
+                        }else{  echo "Falha na consulta do Hospital"; exit();}
+                        $count4--;}
+                        
+                        
+                        /////////// Search Specialty
+                        while($count5>0){
+                            if ($result_specialty = mysqli_query($mysqli, "SELECT name FROM specialties WHERE `id_specialty` like '$id_specialty[$count5]'")){
                                 
-                                //Cleaning mysqli
-                                mysqli_free_result($result_doctor);
-                                
-                                /////////// Search Company
-                                if ($result_hospital = mysqli_query($mysqli, "SELECT company_name FROM company WHERE `id_company` like '$id_hospital'")){
+                                //Email and Password = Invalid
+                                if((mysqli_num_rows ($result_specialty) < 1 )){
+                                    $date_err2 = "Nenhuma Especialidade Encontrada";
                                     
-                                    //Email and Password = Invalid
-                                    if((mysqli_num_rows ($result_hospital) < 1 )){
-                                        $date_err2 = "Nenhum Hospital Encontrado";
+                                    //Cleaning mysqli
+                                    mysqli_free_result($result_specialty);
+                                    
+                                }else{
+                                    $linha_specialty = mysqli_fetch_assoc($result_specialty);
+                                    $specialty[$count5] = $linha_specialty["name"];
+                                }
+                                //Cleaning mysqli
+                                mysqli_free_result($result_specialty);
+                                
+                            }else{  echo "Falha na consulta da Especialidade"; exit();}
+                            $count5--;}
+                            
+                            
+                            /////////// Search Ortopedy Specialty
+                            if ($id_ortopedy != 0){
+                                while($count6>0){
+                                    if ($result_ortopedy = mysqli_query($mysqli, "SELECT ortopedy_specialty FROM ortopedy WHERE `id_ortopedy` like '$id_ortopedy[$count6]'")){
                                         
-                                        //Cleaning mysqli
-                                        mysqli_free_result($result_hospital);
-                                    }else{
-                                        while($linha_hospital = mysqli_fetch_array($result_hospital)){
-                                            $name_hospital = $linha_hospital["company_name"];
+                                        //Email and Password = Invalid
+                                        if((mysqli_num_rows ($result_ortopedy) < 1 )){
+                                            
+                                            //Cleaning mysqli
+                                            mysqli_free_result($result_ortopedy);
+                                        }else{
+                                            $linha_ortopedy = mysqli_fetch_assoc($result_ortopedy);
+                                            $ortopedy_specialty[$count6] = $linha_ortopedy["ortopedy_specialty"];
                                         }
                                         
-                                        //Cleaning mysqli
-                                        mysqli_free_result($result_hospital);
-                                        
-                                        /////////// Search Specialty
-                                        if ($result_specialty = mysqli_query($mysqli, "SELECT name FROM specialties WHERE `id_specialty` like '$id_specialty'")){
-                                            
-                                            //Email and Password = Invalid
-                                            if((mysqli_num_rows ($result_specialty) < 1 )){
-                                                $date_err2 = "Nenhuma Especialidade Encontrada";
-                                                
-                                                //Cleaning mysqli
-                                                mysqli_free_result($result_specialty);
-                                            }else{
-                                                while($linha_specialty = mysqli_fetch_array($result_specialty)){
-                                                    $id_ortopedy = $linha_specialty["name"];
-                                                    $specialty = $linha_specialty["name"];
-                                                }
-                                                
-                                                //Cleaning mysqli
-                                                mysqli_free_result($result_specialty);
-                                                
-                                                /////////// Search Orotopedy Specialty
-                                                if ($result_ortopedy = mysqli_query($mysqli, "SELECT ortopedy_specialty FROM ortopedy WHERE `id_ortopedy` like '$id_ortopedy'")){
-                                                    
-                                                    //Email and Password = Invalid
-                                                    if((mysqli_num_rows ($result_ortopedy) < 1 )){
-                                                        
-                                                        //Cleaning mysqli
-                                                        mysqli_free_result($result_ortopedy);
-                                                    }else{
-                                                        while($linha_ortopedy = mysqli_fetch_array($result_ortopedy)){
-                                                            $ortopedy_specialty = $linha_ortopedy["ortopedy_specialty"];
-                                                        }
-                                                        
-                                                        //Cleaning mysqli
-                                                        mysqli_free_result($result_hospital);
-                                                    }
-                                                }else{  echo "Falha na consulta da Especialidade Óssea"; exit();}
-                                            }
-                                        }else{  echo "Falha na consulta da Especialidade"; exit();}
-                                    }
-                                }else{  echo "Falha na consulta do Hospital"; exit();}
-                            }
-                        }else{  echo "Falha na consulta do Doutor"; exit();}
-                    }
-                }else{  echo "Falha na consulta do Portador"; exit();}
-            }
-        }else{  echo "Falha na consulta do Banco"; exit();}
+                                    }else{  echo "Falha na consulta da Especialidade Óssea"; exit();}
+                                    $count6--;}
+                            }else {}
+                            
+                            //Close Search in database
+            }else{  echo "Falha na consulta do Banco"; exit();}
+            //Close Else "Not Empty Consult in database"
+        }else {
+            $cpf_err = "Digite o CPF";
+            $date_err = "Selecione a Data";
+        }
+        //Close IF "Not Empty Date"
     }
+    //Close "IF HAVE POST"
 }
 
 //Function Test input

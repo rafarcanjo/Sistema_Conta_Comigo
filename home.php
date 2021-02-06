@@ -3,7 +3,7 @@
 	include 'structure_files/header.php';	
 ?>	
 
-<div class="container-fluid bg-light">
+<div class="container-fluid	 bg-light">
 	<div class="container py-5">
 		<div class="row">
 			<div class="col-md-12">
@@ -13,7 +13,7 @@
 
 		<!-- Box Schedule -->
 		<div class="row">
-			<div class="col-lg-6 col-md-6">
+			<div class="col-lg-5 col-md-5">
 				<div class="bg-white border rounded shadow p-5 text-center mb-4 d-grid gap-2">
 					<h2><label class="label_1">Agenda de Consultas</label></h2>
 					
@@ -31,13 +31,13 @@
 			</div>
 
 			<!-- Box Register -->
-			<div class="col-lg-6 col-md-6">
+			<div class="col-lg-5 col-md-5">
 				<div class="bg-white border rounded shadow p-5 text-center mb-4 d-grid gap-2">
 					<h2><label class="label_1">Situação Cadastral do Portador</label></h2>
 					
 					<!-- User Check Icon -->
-					<div class="d-md-block d-sm-none d-none m-4">
-						<i class="fa fa-user-check fa-6x"></i>
+					<div class="d-md-block d-sm-none d-none m-3">
+						<i class="fa fa-user-check fa-5x"></i>
 					</div>
 					<div class="d-sm-block d-md-none m-4">
 						<i class="fa fa-user-check fa-4x"></i>
@@ -51,8 +51,7 @@
 	</div>
 	<div><br><br><br></div>
 </div>
-	
-		
+
 <!-- Include Footer -->
 <?php 
 	include 'structure_files/footer.html';	

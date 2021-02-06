@@ -6,16 +6,10 @@
 	<!-- Container 100% -->
 	
 	<div class="container">
-		<div class="row my-5 my-sm-2">
+		<div class="row my-5 my-sm-2 py-5">
 			<div class="col-md-6">
 				<h1 class="mb-3">Situação cadastral do Portador</h1>
-			</div>
-			<div class="col-md-6">
-				<p>Preencha o CPF do portador abaixo para consultar a situação cadastral dele no sistemas da Conta Comigo. <span class="text-muted">Para facilitar, também mostraremos abaixo se esse portador possui alguma consulta agendada.</sapi_windows_cp_is_utf8></p>
-			</div>
-		</div>
-		<div class="row mb-5 align-items-center">
-			<div class="col-md-6 mb-5">
+				<p class="pe-3">Preencha o CPF do portador abaixo para consultar a situação cadastral dele no sistemas da Conta Comigo. <span class="text-muted">Para facilitar, também mostraremos abaixo se esse portador possui alguma consulta agendada.</sapi_windows_cp_is_utf8></p>
 				<form method="get" action="">
 					<div class="row">
 						<label class="col-form-label" for="cpf">Filtrar por Paciente:</label>
@@ -30,17 +24,20 @@
 					</div>
         		</form>
 			</div>
+		
 			<div class="col-md-6">
+			
+				<!--CADASTRO HABILITADO--> 
 				<h3 class="mb-3">Status do Cadastro</h3>
-
-				<!--CADASTRO HABILITADO-->
 				<div class="alert alert-success" role="alert">
 					<p class="fs-5 lead"><i class="fas fa-check"></i> Esse portador está habilitado.</p>
 					<hr>
 					Isso significa que ele poderá desfrutar de todos os benefícios da Conta Comigo.
 				</div>
-
-				<!--CADASTRO DESABILITADO-->
+                <!-- -->
+                
+				<!--CADASTRO DESABILITADO 
+				<h3 class="mb-3">Status do Cadastro</h3>
 				<div class="alert alert-danger" role="alert">
 					<p class="fs-5 lead"><i class="fas fa-times"></i> Infelizmente o cadastro do paciente esta inativo. </p>
 					<hr>
@@ -51,8 +48,8 @@
 					<i class="fas fa-envelope"></i> contato@contacomigo.org
 					</p>
 
-				</div>
-	
+				</div>				
+                <!-- -->
 			</div>
 		</div>
 	</div>

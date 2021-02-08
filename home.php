@@ -26,7 +26,7 @@
 					</div>
 					
 					<!-- Button Schedules -->
-					<a href="appointmentschedule.php" style="text-decoration: none;" type="submit" class="btn btn-primary btn-lg">Consultar Agenda</a>
+					<a href="http://www.app.contacomigo.org/appointmentschedule.php" style="text-decoration: none;" type="submit" class="btn btn-primary btn-lg">Consultar Agenda</a>
 				</div>
 			</div>
 
@@ -44,7 +44,7 @@
 					</div>
 					
 					<!-- Button Registers -->
-					<a href="portadorconsultation.php" class="btn btn-primary btn-lg" type="submit">Consultar portador</a>
+					<a href="http://www.app.contacomigo.org/portadorconsultation.php" class="btn btn-primary btn-lg" type="submit">Consultar portador</a>
 				</div>
 			</div>
 		</div>

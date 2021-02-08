@@ -47,7 +47,7 @@ $email = $password = "";
                                     $_SESSION['autenticado'] = true;
                                     
                                     //Redirect to Home -> Login Success
-                                    header('location:home.php');
+                                    header('location: http://www.app.contacomigo.org/home.php');
                                 }
                                 else{
                                     unset ($_SESSION['email']);

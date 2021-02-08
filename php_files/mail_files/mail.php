@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         // Exibe uma mensagem de resultado 
         if ($enviado){ 
-            header('location:/../Sistema_ContaComigo/changesubmitted.php');
+            header('location: http://www.app.contacomigo.org/changesubmitted.php');
         } else { 
             echo "Houve um erro enviando o email: ".$mail->ErrorInfo; 
         }

@@ -175,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Email and Password = Invalid
                 if((mysqli_num_rows ($result_date) < 1 )){
                     $date_err2 = "Nenhum Registro Encontrado";
-                    header('location: /../Sistema_ContaComigo/appointmentschedule.php');
+                    header('location: http://www.app.contacomigo.org/appointmentschedule.php');
                     
                     //Cleaning mysqli
                     mysqli_free_result($result_date);

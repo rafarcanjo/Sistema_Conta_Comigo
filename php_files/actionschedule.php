@@ -1,4 +1,4 @@
-<?php 
+loca<?php 
 	$update_err = "";
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -11,7 +11,7 @@
 	        //Update Confirm
 	        if ($result_isconfirmed = mysqli_query($mysqli, "UPDATE appointments SET is_confirmed = '1' WHERE appointments.id_appointment = '$id_appointment_update'")){
 	            
-                //header('location: /../Sistema_ContaComigo/appointmentschedule.php');
+                //header('location: http://www.app.contacomigo.org/appointmentschedule.php');
 	        }else{$update_err = "No Update 1";}
 	        
 	    }else{$update_err = "Post Confirmed Vazio";}
@@ -24,7 +24,7 @@
 	        //Update Porstpone
 	        if ($result_isconfirmed = mysqli_query($mysqli, "UPDATE appointments SET is_confirmed = '2' WHERE appointments.id_appointment = '$id_appointment_update'")){
 	           
-	            //header('location: /../Sistema_ContaComigo/appointmentschedule.php');
+	            //header(location: http://www.app.contacomigo.org/appointmentschedule.php');
 	        }else{$update_err = "No Update 2";}
 	        
 	    }else{$update_err = "Post Porstpone Vazio";}
@@ -37,7 +37,7 @@
 	        //Update Cancel
 	        if ($result_isconfirmed = mysqli_query($mysqli, "UPDATE appointments SET is_confirmed = '3' WHERE appointments.id_appointment = '$id_appointment_update'")){
 	               
-                //header('location: /../Sistema_ContaComigo/appointmentschedule.php');
+                //header('location: http://www.app.contacomigo.org/appointmentschedule.php');
 	        }else{$update_err = "No Update 3";}
 	        
 	    }else{$update_err = "Post Cancel Vazio";}

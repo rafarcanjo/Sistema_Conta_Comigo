@@ -3,7 +3,7 @@
 	include 'structure_files/header.php';	
 ?>	
 
-<div class="container-fluid	 bg-light">
+<div class="container-fluid	 bg-white">
 	<div class="container py-5">
 		<div class="row">
 			<div class="col-md-12">
@@ -52,7 +52,9 @@
 	<div><br><br><br></div>
 </div>
 
-<!-- Include Footer -->
-<?php 
-	include 'structure_files/footer.html';	
-?>
+<div class="row">
+    <div class="col-12 position-fixed bottom-0 start-0">	
+    <!-- Include Footer -->
+    <?php   include 'structure_files/footer.html'; ?>
+    </div>
+</div>

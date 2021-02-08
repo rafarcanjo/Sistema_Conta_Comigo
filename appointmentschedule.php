@@ -3,6 +3,7 @@
 	include 'structure_files/header.php';
 	include 'php_files/conect.php';
 	include 'php_files/validateschedule.php';
+	include 'php_files/actionschedule.php';
 ?>
 		
 	<!-- Search Header -->
@@ -94,21 +95,24 @@
     			<div class="col-md-4">
     				<h3>Data e hora desejada</h3>
     				<?php 
-    				    if($is_confirmed[$count]==0){ echo" <div class='alert alert-danger' role='alert'>" ;}else{}
     				    if($is_confirmed[$count]==1){ echo" <div class='alert alert-success' role='alert'>" ;}else{}
     				    if($is_confirmed[$count]==2){ echo" <div class='alert alert-warning' role='alert'>" ;}else{}
+    				    if($is_confirmed[$count]==3){ echo" <div class='alert alert-danger' role='alert'>" ;}else{}
                     ?>
                     	<i class="far fa-calendar-alt"></i> <?php echo $date[$count]; ?>
     					<hr>
     					<i class="far fa-clock"></i> <?php echo $start_hour[$count]; ?> horas
     				</div>
-    				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-    					<button type="button" class="btn btn-outline-success" id="btn_schedule"><i class="fas fa-check"></i> Agendar</button>	
-    					<button type="button" class="btn btn-outline-warning" id="btn_delay"><a href="postponeschedule.php" class="text-decoration-none text-reset"><i class="far fa-calendar-alt"></i> Adiar</a></button>
-    				</div>
-    				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-    					<button type="button" class="btn btn-outline-danger" id="btn_cancel"><i class="fas fa-times"></i> Cancelar</button>
-    				</div>
+    				<form name="form_action" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
+        				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        					<input type="hidden" name="id_appointment" value="<?php echo $id_appointment[$count]; ?>">
+        					<button type="submit" name="confirmed" value="1" class="btn btn-outline-success" id="btn_schedule"><i class="fas fa-check"></i> Agendar</button>	
+        					<button type="submit" name="porstpone" value="2" class="btn btn-outline-warning" id="btn_delay"><i class="far fa-calendar-alt"></i> Adiar</a></button>
+        				</div>
+        				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        					<button type="submit" name="cancel" value="3" class="btn btn-outline-danger" id="btn_cancel"><i class="fas fa-times"></i> Cancelar</button>
+        				</div>
+    				</form>
     			</div>
     		</div>
             <!-- Close Schedule -->

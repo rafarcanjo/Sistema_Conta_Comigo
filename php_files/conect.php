@@ -1,8 +1,8 @@
 <?php
     // Conecta Banco
     $server= "localhost";
-    $bank = "bd_contacomigo";
-    $user = "root";
+    $bank = "cent6323_bd_contacomigo";
+    $user = "admin";
     $password = "Slaviero@123";
 
     $mysqli = new mysqli($server,$user,$password,$bank);

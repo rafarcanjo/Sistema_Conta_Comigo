@@ -11,7 +11,7 @@
 		{
 		    unset($_SESSION['email']);
 		    unset($_SESSION['password']);
-		    header('location: http://www.app.contacomigo.org/index.php');
+		    header('location: index.php');
 		}
 		else{
 		  $logado = $_SESSION['email'];
@@ -39,7 +39,7 @@
 
 					<!-- Health logo -->
 					<div class="d-inline">
-						<a href="http://www.app.contacomigo.org/php_files/logout.php"><i class="fas fa-briefcase fa-2x text-muted"></i></a>
+						<a href="php_files/logout.php"><i class="fas fa-briefcase fa-2x text-muted"></i></a>
 					</div>
 				</div>
 		  	</div>

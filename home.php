@@ -3,7 +3,7 @@
 	include 'structure_files/header.php';	
 ?>	
 
-<div class="container-fluid	 bg-white">
+<div class="container-fluid	 bg-light">
 	<div class="container py-5">
 		<div class="row">
 			<div class="col-md-12">
@@ -26,7 +26,7 @@
 					</div>
 					
 					<!-- Button Schedules -->
-					<a href="http://www.app.contacomigo.org/appointmentschedule.php" style="text-decoration: none;" type="submit" class="btn btn-primary btn-lg">Consultar Agenda</a>
+					<a href="appointmentschedule.php" style="text-decoration: none;" type="submit" class="btn btn-primary btn-lg">Consultar Agenda</a>
 				</div>
 			</div>
 
@@ -44,7 +44,7 @@
 					</div>
 					
 					<!-- Button Registers -->
-					<a href="http://www.app.contacomigo.org/portadorconsultation.php" class="btn btn-primary btn-lg" type="submit">Consultar portador</a>
+					<a href="portadorconsultation.php" class="btn btn-primary btn-lg" type="submit">Consultar portador</a>
 				</div>
 			</div>
 		</div>
@@ -52,9 +52,7 @@
 	<div><br><br><br></div>
 </div>
 
-<div class="row">
-    <div class="col-12 position-fixed bottom-0 start-0">	
-    <!-- Include Footer -->
-    <?php   include 'structure_files/footer.html'; ?>
-    </div>
-</div>
+<!-- Include Footer -->
+<?php 
+	include 'structure_files/footer.html';	
+?>

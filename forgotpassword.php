@@ -55,7 +55,7 @@
 
 					</div>
 					<div class="text-center">
-						<a href="http://www.app.contacomigo.org/index.php" class="mb-3 d-block text-light"><i class="fas fa-angle-left"></i> Voltar para tela de login</a>						
+						<a href="index.php" class="mb-3 d-block text-light"><i class="fas fa-angle-left"></i> Voltar para tela de login</a>						
 					</div>
 				</div>
 				

@@ -1,4 +1,6 @@
-loca<?php 
+<?php 
+	include 'php_files/conect.php';
+	
 	$update_err = "";
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -43,4 +45,5 @@ loca<?php
 	    }else{$update_err = "Post Cancel Vazio";}
         
 	}else{$update_err = "No Post";}
+
 ?>

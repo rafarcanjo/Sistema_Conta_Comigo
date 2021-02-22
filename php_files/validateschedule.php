@@ -133,27 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                         }else{  echo "Falha na consulta da Especialidade"; exit();}
                         $count11--;}
-                        
-                        
-                        /////////// Search Ortopedy Specialty
-                        if ($id_ortopedy != 0){
-                            while($count12>0){
-                                if ($result_ortopedy = mysqli_query($mysqli, "SELECT ortopedy_specialty FROM ortopedy WHERE `id_ortopedy` like '$id_ortopedy[$count12]'")){
-                                    
-                                    //Email and Password = Invalid
-                                    if((mysqli_num_rows ($result_ortopedy) < 1 )){
-                                        
-                                        //Cleaning mysqli
-                                        mysqli_free_result($result_ortopedy);
-                                    }else{
-                                        $linha_ortopedy = mysqli_fetch_assoc($result_ortopedy);
-                                        $ortopedy_specialty[$count12] = $linha_ortopedy["ortopedy_specialty"];
-                                    }
-                                    
-                                }else{  echo "Falha na consulta da Especialidade Óssea"; exit();}
-                                $count12--;}
-                        }else {}
-                        
+                                                
                         //Close Search in database
         }else{  echo "Falha na consulta do Banco"; exit();}
         

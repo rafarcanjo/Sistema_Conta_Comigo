@@ -3,7 +3,7 @@
 	include 'structure_files/header.php';	
 ?>	
 
-<!-- UPLOAD -> HOME + SCHEDULE + SELECT SPECIALTY + SELECT DOCTOR + LINK + CONECT + VALIDATE SCHEDULE -->
+<!-- UPLOAD -> HOME + SCHEDULE + SELECT SPECIALTY + SELECT DOCTOR + LINK + CONECT + VALIDATE SCHEDULE + VALIDATE CPF -->
 
 <div class="container-fluid	 bg-white">
 	<div class="container py-5">

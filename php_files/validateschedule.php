@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             
             /////////// Search Doctor
             while($count9>0){
-                if ($result_doctor = mysqli_query($mysqli, "SELECT name,id_specialty,id_ortopedy FROM doctors WHERE `id_doctor` like '$id_doctor[$count9]'")){
+                if ($result_doctor = mysqli_query($mysqli, "SELECT name,id_specialty FROM doctors WHERE `id_doctor` like '$id_doctor[$count9]'")){
                     
                     //Email and Password = Invalid
                     if((mysqli_num_rows ($result_doctor) < 1 )){
@@ -82,7 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         $linha_doctor = mysqli_fetch_assoc($result_doctor);
                         $name_doctor[$count9] = $linha_doctor["name"];
                         $id_specialty[$count9] = $linha_doctor["id_specialty"];
-                        $id_ortopedy[$count9] = $linha_doctor["id_ortopedy"];
                     }
                     
                     //Cleaning mysqli
@@ -175,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Email and Password = Invalid
                 if((mysqli_num_rows ($result_date) < 1 )){
                     $date_err2 = "Nenhum Registro Encontrado";
-                    header('location: http://www.app.contacomigo.org/appointmentschedule.php');
+                    header('location: appointmentschedule.php');
                     
                     //Cleaning mysqli
                     mysqli_free_result($result_date);
@@ -229,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 
                 /////////// Search Doctor
                 while($count3>0){
-                    if ($result_doctor = mysqli_query($mysqli, "SELECT name,id_specialty,id_ortopedy FROM doctors WHERE `id_doctor` like '$id_doctor[$count3]'")){
+                    if ($result_doctor = mysqli_query($mysqli, "SELECT name,id_specialty FROM doctors WHERE `id_doctor` like '$id_doctor[$count3]'")){
                         
                         //Email and Password = Invalid
                         if((mysqli_num_rows ($result_doctor) < 1 )){
@@ -240,8 +239,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         }else{
                             $linha_doctor = mysqli_fetch_assoc($result_doctor);
                             $name_doctor[$count3] = $linha_doctor["name"];
-                            $id_specialty[$count3] = $linha_doctor["id_specialty"];
-                            $id_ortopedy[$count3] = $linha_doctor["id_ortopedy"];
+                            $id_specialty[$count3] = $linha_doctor["id_specialty"];                            
                         }
                         
                         //Cleaning mysqli
@@ -294,27 +292,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                             }else{  echo "Falha na consulta da Especialidade"; exit();}
                             $count5--;}
                             
-                            
-                            /////////// Search Ortopedy Specialty
-                            if ($id_ortopedy != 0){
-                                while($count6>0){
-                                    if ($result_ortopedy = mysqli_query($mysqli, "SELECT ortopedy_specialty FROM ortopedy WHERE `id_ortopedy` like '$id_ortopedy[$count6]'")){
-                                        
-                                        //Email and Password = Invalid
-                                        if((mysqli_num_rows ($result_ortopedy) < 1 )){
-                                            
-                                            //Cleaning mysqli
-                                            mysqli_free_result($result_ortopedy);
-                                        }else{
-                                            $linha_ortopedy = mysqli_fetch_assoc($result_ortopedy);
-                                            $ortopedy_specialty[$count6] = $linha_ortopedy["ortopedy_specialty"];
-                                        }
-                                        
-                                    }else{  echo "Falha na consulta da Especialidade Óssea"; exit();}
-                                    $count6--;}
-                            }else {}
-                            
-                            //Close Search in database
+                    //Close Search in database
             }else{  echo "Falha na consulta do Banco"; exit();}
             //Close Else "Not Empty Consult in database"
         }else {

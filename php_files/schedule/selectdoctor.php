@@ -11,3 +11,4 @@ include '../conect.php';
         foreach($fetchAll as $doctors){
             echo '<option value="'.$doctors['id_doctor'].'">'.$doctors['name'].'</option>';
         }
+?>

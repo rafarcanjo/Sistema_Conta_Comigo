@@ -1,6 +1,6 @@
 <?php
 // Session Start
-include 'php_files/conect.php';
+include '../Sistema_ContaComigo/php_files/function.php';
 
 // Defining Variables
 $cpf_err = "";
@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if (!empty($_POST["cpf_schedule"])) {
         //Aplicate Function Test Input
         $cpf_schedule = test_input($_POST["cpf_schedule"]);
+        $cpf_schedule = limpa_cpf($_POST["cpf_schedule"]);
         
         if($result_validation = mysqli_query($mysqli, "SELECT contacomigo FROM holder WHERE `cpf` like '$cpf_schedule'")){
             
@@ -21,11 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             
             /////////// Search CPF in the database
             if ($result_cpf = mysqli_query($mysqli, "SELECT * FROM appointments WHERE `cpf` like '$cpf_schedule'")){
+                $total = mysql_num_rows($result_cpf);
                 
                 //Email and Password = Invalid
-                if((mysqli_num_rows ($result_cpf) < 1 )){
-                    $cpf_err2 = "Nenhum Registro Encontrado";
-                    
+                if($total < 1 ){
+                    $cpf_err = "Nenhum Registro Encontrado";
                     //Cleaning mysqli
                     mysqli_free_result($result_cpf);
                 }else{
@@ -150,13 +151,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }else { $cpf_err = "Digite o CPF";}
     
 //Close "IF HAVE POST"
-}
-
-//Function Test input
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
 }
 ?>

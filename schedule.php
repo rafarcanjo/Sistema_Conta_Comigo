@@ -1,56 +1,61 @@
 <!-- Include Header -->
 <?php 
 	include 'structure_files/header.php';
-	include 'php_files/conect.php';
+	include 'structure_files/conect.php';
 ?>
 
 <!-- Schedule Form -->
 <div class="container">
 	<div class="row">
 	<div class="col-md-12">
-		<h1 class="mt-5">Agende sua consulta:</h1>
+		<h1 class="mt-5">Agende sua consulta:</h1><br/>
 	</div>
-		<div class="col-md-4">
-            <form name="schedule_form" id="schedule_form"><br/>
-                
-                <!-- Hospitais -->
-                <label>Hospital:</label><br/>
-                <select name="hospital" id="hospital" class="form-select">
-                	<option value="0" selected disabled>Selecionar...</option>
-                	<?php 
-                	   $selecthospital = $conexao->prepare("SELECT * from company");
-                	   $selecthospital->execute();
-                	   $fetchAll = $selecthospital->fetchAll();
-                	   foreach ($fetchAll as $hospital){
-                	       if($hospital['has_doctors'] != 0){
-                	           echo '<option value="'.$hospital['id_company'].'">'.$hospital['company_name'].'</option>';
-                	       }
-                	   }                	
-                	?>
-                </select><br/>
-				
-                <label id="specialty_label" style="display:none">Especialidade:</label>
-				<select name="specialty" id="specialty" style="display:none" class="form-select">
-				</select><br/>
+		<div class="col-md-4">    
+		<form name="insert_schedule" method="post" action="php_files/schedule/insertschedule.php">            
+            <!-- Hospitais -->
+            <label>Hospital:</label><br/>
+            <select name="hospital" id="hospital" class="form-select">
+            	<option value="0" selected disabled>Selecionar...</option>
+            	<?php 
+            	   $selecthospital = $conexao->prepare("SELECT * from company");
+            	   $selecthospital->execute();
+            	   $fetchAll = $selecthospital->fetchAll();
+            	   foreach ($fetchAll as $hospital){
+            	       if($hospital['has_doctors'] != 0){
+            	           echo '<option value="'.$hospital['id_company'].'">'.$hospital['company_name'].'</option>';
+            	       }
+            	   }                	
+            	?>
+            </select><br/>
+			
+            <label id="specialty_label" style="display:none">Especialidade:</label>
+			<select name="specialty" id="specialty" style="display:none" class="form-select">
+			</select><br/>
 
-				<label id="doctors_label" style="display:none">Doutor:</label>				                           
-				<select name="doctors" id="doctors" style="display:none" class="form-select">
-				</select><br/>
-				
-				<label id="date_label" style="display:none">Data:</label>				                           
-				<select name="date" id="date" style="display:none" class="form-select">
-				</select><br/>
-				
-				<label id="hour_label" style="display:none">Hora:</label>				                           
-				<select name="hour" id="hour" style="display:none" class="form-select">
-				</select><br/>
+			<label id="doctors_label" style="display:none">Doutor:</label>				                           
+			<select name="doctors" id="doctors" style="display:none" class="form-select">
+			</select><br/>
+			
+			<label id="date_label" style="display:none">Data:</label>				                           
+			<select name="date" id="date" style="display:none" class="form-select" onchange="setTextField(this)">
+			</select><br/>
+				<input id="date_text" type = "hidden" name = "date_text" value = "" />
+                <script type="text/javascript">
+                    function setTextField(ddl) {
+                        document.getElementById('date_text').value = ddl.options[ddl.selectedIndex].text;
+                    }
+                </script>
+			
+			<label id="hour_label" style="display:none">Hora:</label>				                           
+			<select name="hour" id="hour" style="display:none" class="form-select">
+			</select><br/>
 
-				<label id="cpf_label" style="display:none">CPF:</label>				                           
-				<input class="form-control" maxlength="40" type="text" placeholder="999.999.999-99" id="cpf" style="display:none" onblur="validarDados('cpf', document.getElementById('cpf').value);">
-				<div id="campo_cpf"> </div> <br />
+			<label id="cpf_label" style="display:none">CPF:</label>				                           
+			<input class="form-control" maxlength="14" type="text" autocomplete="off" placeholder="999.999.999-99" name="cpf" id="cpf" style="display:none" onblur="validarDados('cpf', document.getElementById('cpf').value);">
+			<div id="campo_cpf"> </div> <br />
 
-				<button type="submit" value="Agendar" id="btn_schedule" name="btn_schedule" style="display:none" class="btn btn-primary">Agendar</button><br />
-            </form>
+			<button type="submit" value="Agendar" id="btn_schedule" name="btn_schedule" style="display:none" class="btn btn-primary">Agendar</button><br />
+		</form>					
 		</div>
 	</div>
 </div>
@@ -216,6 +221,13 @@
     			},
     		})
 		});
+		
+		const cpf = document.querySelector("#cpf");
+        cpf.addEventListener("keyup", () => {
+          let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
+          
+          cpf.value = value;
+        });
 		        
         //BUTTON
         $("#cpf").on("change",function(){
@@ -251,39 +263,32 @@
               //desabilita o botão se o conteúdo do input ficar em branco
               document.getElementById("btn_schedule").disabled = true;
             }
-        });*/
+        });
         
         //MAKE APPOINTMENT
-        $("#btn_schedule").on("change",function(){
+        $("#btn_schedule").on("click",function(){
+        	var idCpf = $("#cpf").val();
+    		var idHospital = $("#hospital").val();
     		var idDoctor = $("#doctors").val();
-    		var idData = $("#date").val();
+    		var idData = $("#data").val();
+    		var idHour = $("#hour").val();
     	
     		$.ajax({
-    			url: 'php_files/schedule/selecthour.php',
+    			url: 'php_files/schedule/insertschedule.php',
     			type: 'POST',
-    			data:{id5:idDoctor,id6:idData},
+    			data:{idCpf,idHospital,idDoctor,idData,idHour},
+    			
     			beforeSend: function(){
-    				$("#hour").css({'display':'block'});
-    				$("#hour_label").css({'display':'block'});
-    				$("#hour").html("Carregando...");
-    				    				
-    				$("#cpf").html("value=");
+    				$("#campo_cpf").html("Carregando..."); 	
     			},                			
     			success: function(data){
-    				$("#hour").css({'display':'block'});
-    				$("#hour_label").css({'display':'block'});
-    				$("#hour").html(data);
+    				$("#campo_cpf").html("Consulta Agendada");
     				
-    				$("#cpf").html("value=");
     			},
     			error: function(data){
-    				$("#hour").css({'display':'block'});
-    				$("#hour_label").css({'display':'block'});
-    				$("#hour").html("Houve um erro ao Carregar ");
-    				
-    				$("#cpf").html("value=");
+    				$("#campo_cpf").html("Erro no Agendamento");
     			},
     		})
-        });
+        });*/
     </script>
     

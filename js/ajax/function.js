@@ -2,7 +2,6 @@
 var req;
 
 function validarDados(campo, valor) {
-
 	// Verificar o Browser
 	// Firefox, Google Chrorme, Safari e outros
 	if(window.XMLHttpRequest) {
@@ -38,5 +37,4 @@ function validarDados(campo, valor) {
 	}
 	
 	req.send(null);
-	
 }

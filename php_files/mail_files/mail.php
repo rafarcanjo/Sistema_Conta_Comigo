@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         // Exibe uma mensagem de resultado 
         if ($enviado){ 
-            header('location: changesubmitted.php');
+            header('location: ../../structure_files/alerts/change_submitted.php');
         } else { 
             echo "Houve um erro enviando o email: ".$mail->ErrorInfo; 
         }

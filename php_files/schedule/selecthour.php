@@ -1,6 +1,6 @@
 <?php
 // Session Start
-include '../conect.php';
+include '../../structure_files/conect.php';
 
 $selecthour = array();
 $hour = array();
@@ -15,7 +15,7 @@ if ($_POST['id6'] == 1){
     }
     $num_array = count($hour);
 }
-else if ($_POST['id6'] == 2){
+elseif ($_POST['id6'] == 2){
     $selecthour = $conexao->prepare("SELECT tuesday FROM doctors WHERE id_doctor ='".$_POST['id5']."'");
     $selecthour->execute();
     $fetchAll = $selecthour->fetchAll();
@@ -25,7 +25,7 @@ else if ($_POST['id6'] == 2){
     }
     $num_array = count($hour);
 }
-else if ($_POST['id6'] == 3){
+elseif ($_POST['id6'] == 3){
     $selecthour = $conexao->prepare("SELECT wednesday FROM doctors WHERE id_doctor ='".$_POST['id5']."'");
     $selecthour->execute();
     $fetchAll = $selecthour->fetchAll();
@@ -35,7 +35,7 @@ else if ($_POST['id6'] == 3){
     }
     $num_array = count($hour);
 }
-else if ($_POST['id6'] == 4){
+elseif ($_POST['id6'] == 4){
     $selecthour = $conexao->prepare("SELECT thursday FROM doctors WHERE id_doctor ='".$_POST['id5']."'");
     $selecthour->execute();
     $fetchAll = $selecthour->fetchAll();
@@ -45,7 +45,7 @@ else if ($_POST['id6'] == 4){
     }
     $num_array = count($hour);
 }
-else if ($_POST['id6'] == 5){
+elseif ($_POST['id6'] == 5){
     $selecthour = $conexao->prepare("SELECT friday FROM doctors WHERE id_doctor ='".$_POST['id5']."'");
     $selecthour->execute();
     $fetchAll = $selecthour->fetchAll();
@@ -55,7 +55,7 @@ else if ($_POST['id6'] == 5){
     }
     $num_array = count($hour);
 }
-else if ($_POST['id6'] == 6){
+elseif ($_POST['id6'] == 6){
     $selecthour = $conexao->prepare("SELECT monday FROM doctors WHERE id_doctor ='".$_POST['id5']."'");
     $selecthour->execute();
     $fetchAll = $selecthour->fetchAll();
@@ -66,7 +66,7 @@ else if ($_POST['id6'] == 6){
     $num_array = count($hour);
 }
 else {
-    echo '<option value="0" selected disabled>Não Possui Agenda</option>';
+    echo '<option value="0" selected disabled>Não Possui Agenda 1</option>';
 }
 
     if ($num_array > 0){
@@ -76,8 +76,8 @@ else {
         while($count < $num_array){
         // Zero
         
-            echo '<option value="'.$count.'">'.$hour[$count].'</option>';
+            echo '<option value="'.$hour[$count].'">'.$hour[$count].'</option>';
             $count++;
         }
-    } else { echo '<option value="0" selected disabled>Não Possui Agenda</option>';}
+    } else { echo '<option value="0" selected disabled>Não Possui Agenda 2</option>';}
 ?>

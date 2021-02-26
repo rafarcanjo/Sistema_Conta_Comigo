@@ -1,13 +1,16 @@
 <?php
 // Session Start
-include '../conect.php';
+include '../../structure_files/conect.php';
+include '../function.php';
     
+// Campo que fez requisição
+
     $hospital = $_POST['hospital'];
     $doctor = $_POST['doctors'];
     $specialty = $_POST['specialty'];
     $date = $_POST['date'];
     $hour = $_POST['hour'];
-    $cpf = $_POST['cpf'];
+    $cpf = limpa_cpf($_POST['cpf']);
 
     //Validating CPF
     $testcpf = $conexao->prepare("SELECT cpf FROM holder WHERE cpf = '$cpf' and `contacomigo` = '1'");

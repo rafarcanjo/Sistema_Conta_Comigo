@@ -3,7 +3,7 @@
 	include 'structure_files/header.php';	
 ?>	
 
-<!-- UPLOAD -> HOME + SCHEDULE + SELECT SPECIALTY + SELECT DOC + SELECT HOUR + LINK + CONECT + VALIDATE SCHEDULE + VALIDATE CPF(VALIDATION) + FUNC JS -->
+<!-- UPLOAD -> HOME + SCHEDULE + SELECT SPECIALTY + SELECT DOC + SELECT HOUR + LINK + CONECT + VALIDATE SCHEDULE + INSERT SCHEDULE + VALIDATE CPF(VALIDATION) + FUNC JS -->
 
 <div class="container-fluid	 bg-white">
 	<div class="container py-5">
@@ -28,7 +28,7 @@
 					</div>
 					
 					<!-- Button Schedules -->
-					<a href="appointmentschedule.php" style="text-decoration: none;" type="submit" class="btn btn-primary btn-lg">Ver Agenda</a>
+					<a href="appointment_consult.php" style="text-decoration: none;" type="submit" class="btn btn-primary btn-lg">Ver Agenda</a>
 				</div>
 			</div>
 
@@ -46,7 +46,7 @@
 					</div>
 					
 					<!-- Button Registers -->
-					<a href="portadorconsultation.php" class="btn btn-primary btn-lg" type="submit">Verificar portador</a>
+					<a href="holder_consult.php" class="btn btn-primary btn-lg" type="submit">Verificar portador</a>
 				</div>
 			</div>
 			

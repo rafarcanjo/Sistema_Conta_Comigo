@@ -1,6 +1,6 @@
 <?php
 // Session Start
-include 'php_files/conect.php';
+include '../Sistema_ContaComigo/php_files/function.php';
 
 // Defining Variables
 $email_err = $password_err = "";
@@ -73,13 +73,5 @@ $email = $password = "";
             }
         }
         }
-    }
-    
-    //Function Test input
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
     }
 ?>

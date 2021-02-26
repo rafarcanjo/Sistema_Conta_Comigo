@@ -1,9 +1,9 @@
 <!-- Include Header -->
 <?php 
-	include 'structure_files/header.php';
-	include 'php_files/conect.php';
-	include 'php_files/validateschedule.php';
-	include 'php_files/actionschedule.php';
+    include 'structure_files/header.php';
+    include 'structure_files/conect.php';
+	include 'php_files/appointments/validate_schedule.php';
+	include 'php_files/appointments/change_status.php';
 ?>
 		
 	<!-- Search Header -->
@@ -120,6 +120,15 @@
         	<?php $count--;}} else { } ?>
         	</div>
 		</div>
+		
+<script>
+	const cpf = document.querySelector("#cpf");
+    cpf.addEventListener("keyup", () => {
+      let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
+      
+      cpf.value = value;
+    });
+</script>
 		
 <div class="row">
     <div class="col-12 position-fixed bottom-0 start-0">	

@@ -1,8 +1,8 @@
 <!-- Include Header -->
 <?php 
 	include 'structure_files/header.php';
-	include 'php_files/conect.php';
-	include 'php_files/validatecpf.php';
+	include 'structure_files/conect.php';
+	include 'php_files/holder/validate_cpf.php';
 ?>
 
 	<!-- Container 100% -->
@@ -18,7 +18,7 @@
 					</div>
 					<div class="row">
 						<div class="col-auto">
-							<input type="text" name="cpf_schedule" maxlength="14" class="form-control form-control-lg" placeholder="000.000.000-00" id="cpf"/>
+							<input type="text" name="cpf_schedule" maxlength="14" autocomplete="off" class="form-control form-control-lg" placeholder="000.000.000-00" id="cpf"/>
 						</div>
 						<div class="col-auto">
 							<button type="submit" name="btn_choosedata" value="Pesquisar" class="btn btn-outline-primary btn-lg"><i class="fas fa-search"></i> Pesquisar</button>
@@ -126,6 +126,15 @@
         	</div>";}
         }else { } 
     ?>
+    
+<script>
+	const cpf = document.querySelector("#cpf");
+    cpf.addEventListener("keyup", () => {
+      let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
+      
+      cpf.value = value;
+    });
+</script>
 	
 <div class="row">
     <div class="col-12 position-fixed bottom-0 start-0">	

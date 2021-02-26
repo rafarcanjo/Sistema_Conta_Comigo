@@ -3,8 +3,9 @@
 <head>
 	<!-- Include Header -->
 	<?php 
+	    include 'structure_files/conect.php';
 		include 'structure_files/link.html';
-		include 'php_files/validatelogin.php';
+		include 'php_files/login/validate_login.php';
 	?>
 </head>
 	<body class="bg-purple bg-overlay-worldmap"> 
@@ -35,7 +36,7 @@
 
 					</div>
 					<div class="text-center">
-						<a href="forgotpassword.php" class="mb-3 d-block text-light">Esqueci meu usuário ou senha</a>	
+						<a href="forgot_password.php" class="mb-3 d-block text-light">Esqueci meu usuário ou senha</a>	
 						<a href="http://www.contacomigo.org" class="text-light">Acessar site Conta Comigo</a>
 						
 					</div>

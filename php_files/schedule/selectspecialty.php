@@ -1,6 +1,6 @@
 <?php
 // Session Start
-include '../conect.php';
+include '../../structure_files/conect.php';
     
     $selectspecialty = $conexao->prepare("SELECT id_specialty,name FROM specialties WHERE id_company = '".$_POST['id1']."'");
     $selectspecialty->execute();

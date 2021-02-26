@@ -1,6 +1,6 @@
 <?php
 // Session Start
-include '../conect.php';
+include '../../structure_files/conect.php';
 
     $selectdata = $conexao->prepare("SELECT available_day FROM doctors WHERE id_doctor = '".$_POST['id4']."'");
     $selectdata->execute();

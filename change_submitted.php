@@ -2,8 +2,8 @@
 <html>
 <head>
 	<!-- Include Header -->
-	<?php 
-		include 'structure_files/link.html';	
+	<?php 		
+		include 'structure_files/link.html';
 	?>
 </head>
 	<body class="bg-purple bg-overlay-worldmap"> 

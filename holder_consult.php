@@ -18,7 +18,8 @@
 					</div>
 					<div class="row">
 						<div class="col-auto">
-							<input type="text" name="cpf_schedule" maxlength="14" autocomplete="off" class="form-control form-control-lg" placeholder="000.000.000-00" id="cpf"/>
+							<input type="text" name="cpf_schedule" maxlength="14" autocomplete="off" class="form-control form-control-lg" placeholder="000.000.000-00" id="cpf" onblur="validarDados('cpf', document.getElementById('cpf').value);"/>
+							<div id="campo_cpf"> </div> <br />
 						</div>
 						<div class="col-auto">
 							<button type="submit" name="btn_choosedata" value="Pesquisar" class="btn btn-outline-primary btn-lg"><i class="fas fa-search"></i> Pesquisar</button>
@@ -32,20 +33,22 @@
 			
 			<?php
 			if(($_SERVER["REQUEST_METHOD"] == "POST")&&((!empty($_POST["cpf_schedule"])))){
-    			if($contacomigo==1){
-    			    echo "
-    				<!--CADASTRO HABILITADO--> 
-    				<h3 class='mb-3'>Status do Cadastro</h3>
-    				<div class='alert alert-success' role='alert'>
-    					<p class='fs-5 lead'><i class='fas fa-check'></i> Esse portador está habilitado.</p>
-    					<hr>
-    					Isso significa que ele poderá desfrutar de todos os benefícios da Conta Comigo.
-    				</div>";
+    			    if(isset($contacomigo)){
+        			    echo "
+        				<!--CADASTRO HABILITADO--> 
+        				<h3 class='mb-3'>Status do Cadastro</h3>
+        				<div class='alert alert-success' role='alert'>
+        					<p class='fs-5 lead'><i class='fas fa-check'></i> Esse portador está habilitado.</p>
+        					<hr>
+        					Isso significa que ele poderá desfrutar de todos os benefícios da Conta Comigo.<br/>
+    
+        				</div>";
 			?>
 			</div>
 		</div>
 	</div>
-
+	
+	<?php if($total_schedule>0){ ?>
 	<div class="container bg-light rounded border py-3 px-4 mb-5">
 		<div class="row">
 			<div class="col-md-12">
@@ -108,23 +111,28 @@
 				</div>
 			</div>
 		</div>
-	<?php 
-        $count--;
-		}}else{
-            echo "
-        	<!--CADASTRO DESABILITADO -->
-        	<h3 class='mb-3'>Status do Cadastro</h3>
-        	<div class='alert alert-danger' role='alert'>
-        		<p class='fs-5 lead'><i class='fas fa-times'></i> Infelizmente o cadastro do paciente esta inativo. </p>
-        		<hr>
-        		<p>Isso significa que ele não pode desfrutar dos benefícios da Conta Comigo.<br>Informe para o paciente, o contato do nosso SAC, para regularizarmos a situação.</p>
-        		<hr>
-        		<p class='fs-4 fs-bold'>SAC Conta Comigo</p><p><i class='fas fa-phone'></i> 0800-610-5665
-        		<br>
-        		<i class='fas fa-envelope'></i> contato@contacomigo.org
-        		</p>
-        	</div>";}
-        }else { } 
+	 <?php
+                        $count--;
+                    //Close While
+        			}
+    			//Close if Total Schedule
+			    } else {  } 			    
+		    //Close IF HAVE POST
+		    }else{
+                echo "
+            	<!--CADASTRO DESABILITADO -->
+            	<h3 class='mb-3'>Status do Cadastro</h3>
+            	<div class='alert alert-danger' role='alert'>
+            		<p class='fs-5 lead'><i class='fas fa-times'></i> Infelizmente o cadastro do paciente esta inativo. </p>
+            		<hr>
+            		<p>Isso significa que ele não pode desfrutar dos benefícios da Conta Comigo.<br>Informe para o paciente, o contato do nosso SAC, para regularizarmos a situação.</p>
+            		<hr>
+            		<p class='fs-4 fs-bold'>SAC Conta Comigo</p><p><i class='fas fa-phone'></i> 0800-610-5665
+            		<br>
+            		<i class='fas fa-envelope'></i> contato@contacomigo.org
+            		</p>
+            	</div>";}
+        }else { }
     ?>
     
 <script>

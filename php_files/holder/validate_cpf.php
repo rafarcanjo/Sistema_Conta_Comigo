@@ -22,11 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             
             /////////// Search CPF in the database
             if ($result_cpf = mysqli_query($mysqli, "SELECT * FROM appointments WHERE `cpf` like '$cpf_schedule'")){
-                $total = mysql_num_rows($result_cpf);
+                $total_schedule = mysqli_num_rows($result_cpf);
                 
                 //Email and Password = Invalid
-                if($total < 1 ){
-                    $cpf_err = "Nenhum Registro Encontrado";
+                if($total_schedule < 1 ){
+                    $cpf_err = "Nenhuma Consulta Encontrada";
                     //Cleaning mysqli
                     mysqli_free_result($result_cpf);
                 }else{
@@ -49,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     
                     //Cleaning mysqli
                     mysqli_free_result($result_cpf);
-                }
                 
                 /////////// Search USER
                 while ($count8>0){
@@ -140,6 +139,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                                 
                             }else{  echo "Falha na consulta da Especialidade"; exit();}
                             $count11--;}
+                //close ELSE
+                }
                             
             //Close Search in database
             }else{  echo "Falha na consulta do Banco"; exit();}

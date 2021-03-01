@@ -36,11 +36,12 @@
 						<div class="col-auto">
 							<label class="col-form-label" for="cpf">Filtrar por Paciente:</label>
 						
-							<input type="text" name="cpf_schedule" class="form-control" placeholder="000.000.000-00" id="cpf"/>
+							<input type="text" name="cpf_schedule" class="form-control" placeholder="000.000.000-00" id="cpf" onblur="validarDados('cpf', document.getElementById('cpf').value);"/>
 						</div>
 						<div class="col-auto">
 							<button type="submit" name="btn_choosedata" value="Pesquisar" class="btn btn-outline-primary"><i class="fas fa-search"></i> Pesquisar</button>
 						</div>
+						<div id="campo_cpf"> </div> <br />
 						<span><?php echo $cpf_err;?></span>
 					</div>
         		</form>
@@ -59,7 +60,11 @@
     			<span><?php echo $date_err2;?></span>
     			
     		<!-- Start While Show Schedules -->
-    		<?php while($count > 0){ ?>
+    		
+			<?php 
+			     if($total_schedule>0){
+    		           while($count > 0){ 
+            ?>
     		<div class="row border rounded p-4 bg-white my-3">
     			<div class="col-md-8">
     				<h3>Informações do portador</h3>
@@ -117,7 +122,16 @@
     		</div>
             <!-- Close Schedule -->
             <!-- ELSE if not results -->
-        	<?php $count--;}} else { } ?>
+        	<?php 
+        	               $count--;
+        	           //Close While
+	                   }
+	              //Close if Total Schedule
+			     } else {  } 
+		    //Close IF HAVE POST
+            } else { } 
+            ?>
+        	
         	</div>
 		</div>
 		

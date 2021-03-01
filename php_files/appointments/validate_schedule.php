@@ -16,12 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         /////////// Search CPF in the database
         if ($result_cpf = mysqli_query($mysqli, "SELECT * FROM appointments WHERE `cpf` like '$cpf_schedule'")){
-            $total = mysqli_num_rows($result_cpf);
-             echo $total;                
-           
+            $total_schedule = mysqli_num_rows($result_cpf);              
             
             //Email and Password = Invalid
-            if($total == 0 ){
+            if($total_schedule == 0 ){
                 $cpf_err = "CPF não cadastrado";
                 //Cleaning mysqli
                 mysqli_free_result($result_cpf);
@@ -127,7 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             
         //Close Else "Not Empty Consult in database"
         }else {
-            $cpf_err = "Digite um CPF válido";
             $date_err = "Selecione a Data";
         }
         
@@ -142,10 +139,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         /////////// Search Date in the database
         if ($result_date = mysqli_query($mysqli, "SELECT * FROM appointments WHERE `date` like '$date_schedule'")){
-            $total = mysqli_num_rows($result_date);
+            $total_schedule = mysqli_num_rows($result_date);
             
             //Email and Password = Invalid
-            if($total == 0 ){
+            if($total_schedule == 0 ){
                 $date_err2 = "Nenhum Registro Encontrado";
                 header('location: appointmentschedule.php');
                 //Cleaning mysqli
@@ -256,7 +253,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
     //Close Else "Not Empty Consult in database"
     }else {
-        $cpf_err = "Digite o CPF";
         $date_err = "Selecione a Data";
     }
 

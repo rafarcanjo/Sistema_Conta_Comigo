@@ -48,14 +48,20 @@
 			
 			<label id="hour_label" style="display:none">Hora:</label>				                           
 			<select name="hour" id="hour" style="display:none" class="form-select">
-			</select><br/>
-
-			<label id="cpf_label" style="display:none">CPF:</label>				                           
-			<input class="form-control" maxlength="14" type="text" autocomplete="off" placeholder="999.999.999-99" name="cpf" id="cpf" style="display:none" onblur="validarDados('cpf', document.getElementById('cpf').value);">
-			<div id="campo_cpf"> </div> <br />
-
-			<button type="submit" value="Agendar" id="btn_schedule" name="btn_schedule" style="display:none" class="btn btn-primary">Agendar</button><br />
-		</form>					
+			</select><br/>		
+			<div class="row">
+			<div class="col-md-9">
+    			<label id="cpf_label" style="display:none">CPF:</label>				                           
+    			<input class="form-control" maxlength="14" type="text" autocomplete="off" placeholder="999.999.999-99" name="cpf" id="cpf" style="display:none" onblur="validarDados('cpf', document.getElementById('cpf').value);">
+    			<div id="campo_cpf"> </div> <br />
+			</div>
+    			
+			<div class="col-md-3">
+				<label id="cpf_label" style="color: white;">.</label>		
+    			<a id="btn_false" id="btn_false" style="display:none" class="btn btn-primary w-1">Validar</a>
+			</div>
+			</div>
+		</form>			
 		</div>
 	</div>
 </div>
@@ -210,14 +216,17 @@
     			beforeSend: function(){
     				$("#cpf").css({'display':'block'});
     				$("#cpf_label").css({'display':'block'});
+    				$("#btn_false").css({'display':'block'});
     			},                			
     			success: function(data){
     				$("#cpf").css({'display':'block'});
     				$("#cpf_label").css({'display':'block'});
+    				$("#btn_false").css({'display':'block'});
     			},
     			error: function(data){
     				$("#cpf").css({'display':'block'});
-    				$("#cpf_label").css({'display':'block'});   			
+    				$("#cpf_label").css({'display':'block'});
+    				$("#btn_false").css({'display':'block'});   			
     			},
     		})
 		});
@@ -229,42 +238,6 @@
           cpf.value = value;
         });
 		        
-        //BUTTON
-        $("#cpf").on("change",function(){
-    		$.ajax({
-    			beforeSend: function(){
-    				$("#btn_schedule").css({'display':'block'});
-    			},                			
-    			success: function(data){
-    				$("#btn_schedule").css({'display':'block'});
-    			},
-    			error: function(data){
-    				$("#btn_schedule").css({'display':'block'}); 			
-    			},
-    		})
-		});
-		
-		/*//BUTTON DISABLE
-		//desabilita o botão no início
-        document.getElementById("btn_schedule").disabled = true;
-        
-        //cria um event listener que escuta mudanças no input
-        document.getElementById("campo_cpf").addEventListener("campo_cpf", function(event){
-        
-          //busca conteúdo do input
-            var conteudo = document.getElementById("campo_cpf").innerHTML;
-            var teste_cpf = 'CPF Correto';
-        		
-            //valida conteudo do input 
-            if (conteudo == teste_cpf) {
-              //habilita o botão
-              document.getElementById("btn_schedule").disabled = false;
-            } else {
-              //desabilita o botão se o conteúdo do input ficar em branco
-              document.getElementById("btn_schedule").disabled = true;
-            }
-        });
-        
         //MAKE APPOINTMENT
         $("#btn_schedule").on("click",function(){
         	var idCpf = $("#cpf").val();
@@ -289,6 +262,6 @@
     				$("#campo_cpf").html("Erro no Agendamento");
     			},
     		})
-        });*/
+        });
     </script>
     

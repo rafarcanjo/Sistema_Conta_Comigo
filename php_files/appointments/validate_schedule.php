@@ -144,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             //Email and Password = Invalid
             if($total_schedule == 0 ){
                 $date_err2 = "Nenhum Registro Encontrado";
-                header('location: appointmentschedule.php');
+                //header('location: /../Sistema_ContaComigo/appointment_consult.php');
                 //Cleaning mysqli
                 mysqli_free_result($result_date);
                 

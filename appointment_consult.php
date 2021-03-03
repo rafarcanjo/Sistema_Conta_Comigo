@@ -3,7 +3,7 @@
     include 'structure_files/header.php';
     include 'structure_files/conect.php';
 	include 'php_files/appointments/validate_schedule.php';
-	include 'php_files/appointments/change_status.php';
+	//include 'php_files/appointments/change_schedule.php';
 ?>
 		
 	<!-- Search Header -->
@@ -21,7 +21,7 @@
 						<div class="col-auto">
 							<label class="form-label" for="date_schedule">Escolha o Dia:</label>
 						
-							<input type="text" name="date_schedule" class="form-control" placeholder="DD-MM-AAAA" id="calendario"/>
+							<input type="text" name="date_schedule" class="form-control" value = "<?php if (($_SERVER["REQUEST_METHOD"] == "POST")&&(!empty($_POST["date_schedule"]))){ echo $_POST['date_schedule'];}?>"  placeholder="DD-MM-AAAA" id="calendario"/>
 						</div>
 						<div class="col-auto">
 							<button type="submit" name="btn_choosedata" value="Pesquisar" class="btn btn-outline-primary"><i class="fas fa-search"></i> Pesquisar</button>
@@ -36,13 +36,12 @@
 						<div class="col-auto">
 							<label class="col-form-label" for="cpf">Filtrar por Paciente:</label>
 						
-							<input type="text" name="cpf_schedule" class="form-control" placeholder="000.000.000-00" id="cpf" onblur="validarDados('cpf', document.getElementById('cpf').value);"/>
+							<input type="text" name="cpf_schedule" class="form-control" value = "<?php if (($_SERVER["REQUEST_METHOD"] == "POST")&&(!empty($_POST["cpf_schedule"]))){ echo $_POST['cpf_schedule'];}?>" placeholder="000.000.000-00" maxlength="14" id="cpf" onblur="validarCpf('cpf', document.getElementById('cpf').value);"/>
 						</div>
 						<div class="col-auto">
 							<button type="submit" name="btn_choosedata" value="Pesquisar" class="btn btn-outline-primary"><i class="fas fa-search"></i> Pesquisar</button>
 						</div>
-						<div id="campo_cpf"> </div> <br />
-						<span><?php echo $cpf_err;?></span>
+						<div id="campo_cpf"><?php echo $cpf_err;?> </div> <br />
 					</div>
         		</form>
 			</div>
@@ -110,12 +109,9 @@
     				</div>
     				<form name="form_action" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
         				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        					<input type="hidden" name="id_appointment" value="<?php echo $id_appointment[$count]; ?>">
-        					<button type="submit" name="confirmed" value="1" class="btn btn-outline-success" id="btn_schedule"><i class="fas fa-check"></i> Agendar</button>	
-        					<button type="submit" name="porstpone" value="2" class="btn btn-outline-warning" id="btn_delay"><i class="far fa-calendar-alt"></i> Adiar</a></button>
-        				</div>
-        				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        					<button type="submit" name="cancel" value="3" class="btn btn-outline-danger" id="btn_cancel"><i class="fas fa-times"></i> Cancelar</button>
+        					<a class="btn btn-outline-success" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_schedule".$count; ?>" onclick="confirmaAgenda(this.name,this.id)"><i class="fas fa-check"></i> Agendar</a>	
+        					<a class="btn btn-outline-warning" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_porstpone".$count; ?>" onclick="adiaAgenda(this.name,this.id)"><i class="far fa-calendar-alt"></i> Adiar</a>
+        					<a class="btn btn-outline-danger" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_cancel".$count; ?>" onclick="cancelaAgenda(this.name,this.id)"><i class="fas fa-times"></i> Cancelar</a>
         				</div>
     				</form>
     			</div>
@@ -133,7 +129,6 @@
             ?>
         	
         	</div>
-		</div>
 		
 <script>
 	const cpf = document.querySelector("#cpf");
@@ -150,3 +145,64 @@
     <?php   include 'structure_files/footer.html'; ?>
     </div>
 </div>
+
+<script>
+//Agendar
+        function confirmaAgenda(id_appointment,btn_schedule){
+    		$.ajax({
+    			url: 'php_files/appointments/change_schedule.php',
+    			type: 'POST',
+    			data:{idAppointment:id_appointment},
+    			
+    			beforeSend: function(){
+    				$("#"+btn_schedule).html("Carregando");
+    			},                			
+    			success: function(data){
+    				$("#"+btn_schedule).html("Agendado");
+
+    			},
+    			error: function(data){
+    				$("#"+btn_schedule).html("Erro");
+    			},
+    		})
+        }
+
+//Adiar
+        function adiaAgenda(id_appointment,btn_porstpone){
+     		$.ajax({
+        			url: 'php_files/appointments/change_porstpone.php',
+        			type: 'POST',
+        			data:{idAppointment:id_appointment},
+        			
+        			beforeSend: function(){
+        				$("#"+btn_porstpone).html("Carregando");
+        			},                			
+        			success: function(data){
+        				$("#"+btn_porstpone).html("Adiado");
+        			},
+        			error: function(data){
+        				$("#"+btn_porstpone).html("Erro");
+        			},
+        		})
+        }
+        
+        
+//Cancelar
+        function cancelaAgenda(id_appointment,btn_cancel){
+    		$.ajax({
+    			url: 'php_files/appointments/change_cancel.php',
+    			type: 'POST',
+    			data:{idAppointment:id_appointment},
+    			
+    			beforeSend: function(){
+    				$("#"+btn_cancel).html("Carregando");
+    			},                			
+    			success: function(data){
+    				$("#"+btn_cancel).html("Cancelado");
+    			},
+    			error: function(data){
+    				$("#"+btn_cancel).html("Erro");
+    			},
+    		})
+        }
+</script>

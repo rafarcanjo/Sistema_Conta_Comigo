@@ -80,7 +80,7 @@
 	<div class="container bg-light rounded border py-3 px-4 mb-5">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Resultados da Agenda</h2><br/>
+				<h2>Resultados da Agenda</h2>
 			</div>
 		</div>
 

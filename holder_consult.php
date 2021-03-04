@@ -13,17 +13,18 @@
 				<h1 class="mb-3">Situação cadastral do Portador</h1>
 				<p class="pe-3">Preencha o CPF do portador abaixo para consultar a situação cadastral dele no sistemas da Conta Comigo. <span class="text-muted">Para facilitar, também mostraremos abaixo se esse portador possui alguma consulta agendada.</sapi_windows_cp_is_utf8></p>
 				<form method="post" id="form_holder" action="<?php echo $_SERVER["PHP_SELF"];?>">
+					
 					<div class="row">
 						<label class="col-form-label" for="cpf">Filtrar por Paciente:</label>
 					</div>
 					<div class="row">
-						<div class="col-auto">
-							<input type="text" name="cpf_schedule" maxlength="14" autocomplete="off" class="form-control form-control-lg" value = "<?php if ($_SERVER["REQUEST_METHOD"] == "POST"){ echo $_POST['cpf_schedule'];}?>" placeholder="000.000.000-00" id="cpf" onblur="validarCpf('cpf', document.getElementById('cpf').value);"/>
+						<div class="col-md-4">
+							<input type="text" name="cpf_schedule" maxlength="14" autocomplete="off" class="form-control" value = "<?php if ($_SERVER["REQUEST_METHOD"] == "POST"){ echo $_POST['cpf_schedule'];}?>" placeholder="000.000.000-00" id="cpf" onkeyup="validarCpf('cpf', document.getElementById('cpf').value);"/>
+						</div>
+						<div class="col-md-4">
 							<div id="campo_cpf"> </div> <br />
 						</div>
-						<div class="col-auto">
-							<button type="submit" class="btn btn-outline-primary btn-lg" ><i class="fas fa-search"></i> Pesquisar</button>
-						</div>
+						
 					</div>
         		</form>
     			<!--<span><?php echo $cpf_err;?></span> -->
@@ -48,7 +49,11 @@
 		</div>
 	</div>
 	
-	<?php if($total_schedule>0){ ?>
+	<?php
+	   if($total_schedule>0){
+	       $cpf_bd[$count] = acrescentaZero($cpf_bd[$count]);
+	       $cpf_bd[$count] = acrescentaPontuacao($cpf_bd[$count]);
+	?>
 	<div class="container bg-light rounded border py-3 px-4 mb-5">
 		<div class="row">
 			<div class="col-md-12">
@@ -80,7 +85,9 @@
 		</div>
 
         <!-- Start While Show Schedules -->
-    	<?php while($count > 0){ ?>
+    	<?php 
+    	   while($count > 0){
+    	?>
 		<div class="row border rounded p-4 bg-white my-3">
 			<div class="col-md-8 mb-3">
     			<h3>Informações da consulta</h3>

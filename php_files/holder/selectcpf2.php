@@ -34,7 +34,7 @@ if ($valor == "") {
         
             
             if (($cpf == $valor)&&($contacomigo==1)) {
-                echo "CPF Correto";                
+                echo '<button type="submit" class="btn btn-outline-primary" ><i class="fas fa-search"></i> Pesquisar</button><br />'."CPF Correto";
             } elseif ($cpf != $valor){
                 echo "CPF Incorreto";
             } elseif (($cpf == $valor)&&($contacomigo==0)){

@@ -3,45 +3,45 @@
     include 'structure_files/header.php';
     include 'structure_files/conect.php';
 	include 'php_files/appointments/validate_schedule.php';
-	//include 'php_files/appointments/change_schedule.php';
 ?>
 		
 	<!-- Search Header -->
 	<div class="container">
-		<div class="row mt-5 mb-3">
+		<div class="row mt-5 mb-2">
 			<div class="col-md-12">
 				<h1>Agenda de Consultas</h1>
 				<p>Escolha entre filtrar pela Data ou pelo CPF do paciente.</p>
 			</div>
 		</div>
-		<div class="row mb-5 align-items-center">
+		<div class="row mb-4">
 			<div class="col-md-6">
 				<form method="post" autocomplete="off" action="<?php echo $_SERVER["PHP_SELF"];?>">
-					<div class="row align-items-end">
-						<div class="col-auto">
-							<label class="form-label" for="date_schedule">Escolha o Dia:</label>
-						
+					<div class="row">
+						<label class="col-form-label" for="date_schedule">Escolha o Dia:</label>
+					</div>
+					<div class="row">
+						<div class="col-md-5">
 							<input type="text" name="date_schedule" class="form-control" value = "<?php if (($_SERVER["REQUEST_METHOD"] == "POST")&&(!empty($_POST["date_schedule"]))){ echo $_POST['date_schedule'];}?>"  placeholder="DD-MM-AAAA" id="calendario"/>
 						</div>
-						<div class="col-auto">
+						<div class="col-md-5">
 							<button type="submit" name="btn_choosedata" value="Pesquisar" class="btn btn-outline-primary"><i class="fas fa-search"></i> Pesquisar</button>
 						</div>
-						<span><?php echo $date_err;?></span>
+						<div id="campo_date"><?php echo $date_err;?></div> <br />
 					</div>
         		</form>
 			</div>
 			<div class="col-md-6">
 				<form method="post" autocomplete="off" action="<?php echo $_SERVER["PHP_SELF"];?>">
-					<div class="row align-items-end">
-						<div class="col-auto">
-							<label class="col-form-label" for="cpf">Filtrar por Paciente:</label>
-						
-							<input type="text" name="cpf_schedule" class="form-control" value = "<?php if (($_SERVER["REQUEST_METHOD"] == "POST")&&(!empty($_POST["cpf_schedule"]))){ echo $_POST['cpf_schedule'];}?>" placeholder="000.000.000-00" maxlength="14" id="cpf" onblur="validarCpf('cpf', document.getElementById('cpf').value);"/>
+					<div class="row">
+						<label class="col-form-label" for="cpf">Filtrar por Paciente:</label>
+					</div>
+					<div class="row">
+						<div class="col-md-5">
+							<input type="text" name="cpf_schedule" class="form-control" value = "<?php if (($_SERVER["REQUEST_METHOD"] == "POST")&&(!empty($_POST["cpf_schedule"]))){ echo $_POST['cpf_schedule'];}?>" placeholder="000.000.000-00" maxlength="14" id="cpf" onkeyup="validarCpf('cpf', document.getElementById('cpf').value);"/>
 						</div>
-						<div class="col-auto">
-							<button type="submit" name="btn_choosedata" value="Pesquisar" class="btn btn-outline-primary"><i class="fas fa-search"></i> Pesquisar</button>
+						<div class="col-md-5">
+							<div id="campo_cpf"></div>
 						</div>
-						<div id="campo_cpf"><?php echo $cpf_err;?> </div> <br />
 					</div>
         		</form>
 			</div>
@@ -60,9 +60,11 @@
     			
     		<!-- Start While Show Schedules -->
     		
-			<?php 
+			<?php
 			     if($total_schedule>0){
     		           while($count > 0){ 
+    		               $cpf_bd[$count] = acrescentaZero($cpf_bd[$count]);
+    		               $cpf_bd[$count] = acrescentaPontuacao($cpf_bd[$count]);
             ?>
     		<div class="row border rounded p-4 bg-white my-3">
     			<div class="col-md-8">
@@ -99,9 +101,9 @@
     			<div class="col-md-4">
     				<h3>Data e hora desejada</h3>
     				<?php 
-    				    if($is_confirmed[$count]==1){ echo" <div class='alert alert-success' role='alert'>" ;}else{}
-    				    if($is_confirmed[$count]==2){ echo" <div class='alert alert-warning' role='alert'>" ;}else{}
-    				    if($is_confirmed[$count]==3){ echo" <div class='alert alert-danger' role='alert'>" ;}else{}
+    				    if($is_confirmed[$count]==1){ echo" <div id='btn_$count' class='alert alert-success' role='alert'>" ;}else{}
+    				    if($is_confirmed[$count]==2){ echo" <div id='btn_$count' class='alert alert-warning' role='alert'>" ;}else{}
+    				    if($is_confirmed[$count]==3){ echo" <div id='btn_$count' class='alert alert-danger' role='alert'>" ;}else{}
                     ?>
                     	<i class="far fa-calendar-alt"></i> <?php echo $date[$count]; ?>
     					<hr>
@@ -109,9 +111,9 @@
     				</div>
     				<form name="form_action" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
         				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        					<a class="btn btn-outline-success" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_schedule".$count; ?>" onclick="confirmaAgenda(this.name,this.id)"><i class="fas fa-check"></i> Agendar</a>	
-        					<a class="btn btn-outline-warning" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_porstpone".$count; ?>" onclick="adiaAgenda(this.name,this.id)"><i class="far fa-calendar-alt"></i> Adiar</a>
-        					<a class="btn btn-outline-danger" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_cancel".$count; ?>" onclick="cancelaAgenda(this.name,this.id)"><i class="fas fa-times"></i> Cancelar</a>
+        					<a class="btn btn-outline-success" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_schedule".$count; ?>" title="<?php echo $count; ?>" onclick="confirmaAgenda(this.name,this.id,this.title)"><i class="fas fa-check"></i> Agendar</a>	
+        					<a class="btn btn-outline-warning" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_porstpone".$count; ?>" title="<?php echo $count; ?>" onclick="adiaAgenda(this.name,this.id,this.title)"><i class="far fa-calendar-alt"></i> Adiar</a>
+        					<a class="btn btn-outline-danger" name="<?php echo $id_appointment[$count]; ?>" id="<?php echo "btn_cancel".$count; ?>" title="<?php echo $count; ?>" onclick="cancelaAgenda(this.name,this.id,this.title)"><i class="fas fa-times"></i> Cancelar</a>
         				</div>
     				</form>
     			</div>
@@ -148,7 +150,7 @@
 
 <script>
 //Agendar
-        function confirmaAgenda(id_appointment,btn_schedule){
+        function confirmaAgenda(id_appointment,btn_schedule,count){
     		$.ajax({
     			url: 'php_files/appointments/change_schedule.php',
     			type: 'POST',
@@ -158,8 +160,10 @@
     				$("#"+btn_schedule).html("Carregando");
     			},                			
     			success: function(data){
-    				$("#"+btn_schedule).html("Agendado");
-
+    				$("#"+btn_schedule).html("Agendado"); 
+    				$("#btn_"+count).css({'background-color':'#d1e7dd'});
+    				$("#btn_"+count).css({'border-color':'#badbcc'});
+    				$("#btn_"+count).css({'color':'#0f5132'});
     			},
     			error: function(data){
     				$("#"+btn_schedule).html("Erro");
@@ -168,7 +172,7 @@
         }
 
 //Adiar
-        function adiaAgenda(id_appointment,btn_porstpone){
+        function adiaAgenda(id_appointment,btn_porstpone,count){
      		$.ajax({
         			url: 'php_files/appointments/change_porstpone.php',
         			type: 'POST',
@@ -179,6 +183,9 @@
         			},                			
         			success: function(data){
         				$("#"+btn_porstpone).html("Adiado");
+        				$("#btn_"+count).css({'background-color':'#fff3cd'});
+        				$("#btn_"+count).css({'border-color':'#ffecb5'});
+        				$("#btn_"+count).css({'color':'#664d03'});
         			},
         			error: function(data){
         				$("#"+btn_porstpone).html("Erro");
@@ -188,7 +195,7 @@
         
         
 //Cancelar
-        function cancelaAgenda(id_appointment,btn_cancel){
+        function cancelaAgenda(id_appointment,btn_cancel,count){
     		$.ajax({
     			url: 'php_files/appointments/change_cancel.php',
     			type: 'POST',
@@ -199,6 +206,9 @@
     			},                			
     			success: function(data){
     				$("#"+btn_cancel).html("Cancelado");
+    				$("#btn_"+count).css({'background-color':'#f8d7da'});
+    				$("#btn_"+count).css({'border-color':'#f5c2c7'});
+    				$("#btn_"+count).css({'color':'#842029'});
     			},
     			error: function(data){
     				$("#"+btn_cancel).html("Erro");

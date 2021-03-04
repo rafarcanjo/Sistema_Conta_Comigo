@@ -49,17 +49,10 @@
 			<label id="hour_label" style="display:none">Hora:</label>				                           
 			<select name="hour" id="hour" style="display:none" class="form-select">
 			</select><br/>		
-			<div class="row">
 			<div class="col-md-9">
     			<label id="cpf_label" style="display:none">CPF:</label>				                           
-    			<input class="form-control" maxlength="14" type="text" autocomplete="off" placeholder="999.999.999-99" name="cpf" id="cpf" style="display:none" onblur="validarDados('cpf', document.getElementById('cpf').value);">
+    			<input class="form-control" maxlength="14" type="text" autocomplete="off" placeholder="999.999.999-99" name="cpf" id="cpf" style="display:none" onkeyup="validarDados('cpf', document.getElementById('cpf').value);">
     			<div id="campo_cpf"> </div> <br />
-			</div>
-    			
-			<div class="col-md-3">
-				<label id="cpf_label" style="color: white;">.</label>		
-    			<a id="btn_false" id="btn_false" style="display:none" class="btn btn-primary w-1">Validar</a>
-			</div>
 			</div>
 		</form>			
 		</div>

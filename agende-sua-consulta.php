@@ -1,8 +1,23 @@
 <!-- Include Header -->
 <?php 
-	include 'structure_files/header.php';
 	include 'structure_files/conect.php';
+    include 'structure_files/link.html';
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light shadow border-bottom">
+		<div class="container">
+		  	<a class="navbar-brand" href="http://www.contacomigo.org	"><img id="logo_contacomigo" src="img_files/Logo-Conta-Comigo-Horizontal@0.5x.png"></a>
+		  	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		  	</button>
+		  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  	</div>
+		</div>
+	</nav>
 
 <!-- Schedule Form -->
 <div class="container-fluid	 bg-white">
@@ -13,7 +28,7 @@
         	</div>
         	
     		<div class="col-md-4">    
-    		<form name="insert_schedule" method="post" action="php_files/schedule/insertschedule.php">            
+    		<form name="insert_schedule" method="post" action="php_files/schedule/insertschedule2.php">            
                 <!-- Hospitais -->
                 <label>Hospital:</label><br/>
                 <select name="hospital" id="hospital" class="form-select">

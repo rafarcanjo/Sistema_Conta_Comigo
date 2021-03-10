@@ -1,6 +1,6 @@
 <?php
 // Session Start
-include '../Sistema_ContaComigo/php_files/function.php';
+include '../app.contacomigo.org/php_files/function.php';
 
 // Defining Variables
 $cpf_err = "";
@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             }else{  echo "Falha na consulta do Banco"; exit();}
             
         //Close IF validating if are active conta comigo holder
-        }else { $cpf_err = "CPF inválido";}
+        }else { $cpf_err = "CPF invÃ¡lido";}
         
     //Close "IF VOID POST"
     }else { $cpf_err = "Digite o CPF";}

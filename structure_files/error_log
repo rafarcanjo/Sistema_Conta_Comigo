@@ -1,0 +1,2 @@
+[05-Mar-2021 15:57:50 America/Fortaleza] PHP Warning:  session_start(): Cannot start session when headers already sent in /home3/cent6323/app.contacomigo.org/structure_files/header.php on line 13
+[05-Mar-2021 16:21:44 America/Fortaleza] PHP Warning:  session_start(): Cannot start session when headers already sent in /home3/cent6323/app.contacomigo.org/structure_files/header.php on line 13

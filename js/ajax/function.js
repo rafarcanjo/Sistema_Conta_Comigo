@@ -13,7 +13,7 @@ function validarDados(campo, valor) {
 	}
 	
 	// Aqui vão os valores, caso haja mais de um, e o nome do campo que pediu a requisição.
-	var url = "../../Sistema_ContaComigo/php_files/schedule/selectcpf.php?campo="+campo+"&valor="+valor;
+	var url = "../../php_files/schedule/selectcpf.php?campo="+campo+"&valor="+valor;
 	
 	// Chamada do método open para processar a requisição
 	req.open("Get", url, true); 
@@ -51,7 +51,7 @@ function validarCpf(campo, valor) {
 	}
 	
 	// Aqui vão os valores, caso haja mais de um, e o nome do campo que pediu a requisição.
-	var url = "../../Sistema_ContaComigo/php_files/holder/selectcpf2.php?campo="+campo+"&valor="+valor;
+	var url = "../../php_files/holder/selectcpf2.php?campo="+campo+"&valor="+valor;
 	
 	// Chamada do método open para processar a requisição
 	req.open("Get", url, true); 

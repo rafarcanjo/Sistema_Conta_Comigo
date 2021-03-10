@@ -1,6 +1,6 @@
 <?php
 // Session Start
-include '../../structure_files/conect.php';
+require_once '../../structure_files/conect.php';
 include '../function.php';
     
 // Campo que fez requisição

@@ -1,12 +1,11 @@
+<?php 
+    include 'structure_files/conect.php';
+    include 'structure_files/link.html';
+    include 'php_files/login/validate_login.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Include Header -->
-	<?php 
-	    include 'structure_files/conect.php';
-		include 'structure_files/link.html';
-		include 'php_files/login/validate_login.php';
-	?>
 </head>
 	<body class="bg-purple bg-overlay-worldmap"> 
 		<!-- Container 100% -->
@@ -40,8 +39,7 @@
 						<a href="http://www.contacomigo.org" class="text-light">Acessar site Conta Comigo</a>
 						
 					</div>
-				</div>
-				
+				</div>				
 			</div>
 		</div>
 	</body>

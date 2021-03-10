@@ -1,6 +1,6 @@
 <?php
 // Session Start
-include '../Sistema_ContaComigo/php_files/function.php';
+require_once '../app.contacomigo.org/php_files/function.php';
 
 // Defining Variables
 $cpf_err = $date_err = $date_err2 = "";

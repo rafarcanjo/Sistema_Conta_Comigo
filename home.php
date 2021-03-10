@@ -2,9 +2,7 @@
 <?php 
 	include 'structure_files/header.php';	
 ?>	
-
 <!-- UPLOAD -> HOME + SCHEDULE + SELECT SPECIALTY + SELECT DOC + SELECT HOUR + LINK + CONECT + VALIDATE SCHEDULE + INSERT SCHEDULE + VALIDATE CPF(VALIDATION) + FUNC JS -->
-
 <div class="container-fluid	 bg-white">
 	<div class="container py-5">
 		<div class="row">
@@ -12,10 +10,32 @@
 				<h1 class="mb-5">Sistema Online Conta Comigo</h1>
 			</div>
 		</div>
-
-		<!-- Box Schedule -->
+		
+		<!-- ROW HOLDER -->
 		<div class="row">
-			<div class="col-lg-4 col-md-4">
+		    <!-- Box Consult Holder -->
+			<div class="col-lg-3 col-md-3">
+				<div class="bg-white border rounded shadow p-4 text-center mb-4 d-grid gap-2">
+					<h2><label class="label_1">Verificar Portador</label></h2>
+					
+					<!-- User Check Icon -->
+					<div class="d-md-block d-sm-none d-none m-3">
+						<i class="fa fa-user-check fa-4x"></i>
+					</div>
+					<div class="d-sm-block d-md-none m-3">
+						<i class="fa fa-user-check fa-3x"></i>
+					</div>
+					
+					<!-- Button Registers -->
+					<a href="holder_consult.php" class="btn btn-primary btn-lg" type="submit">Verificar portador</a>
+				</div>
+			</div>
+		<!-- </div>
+		
+		 ROW MEDICINE
+		<div class="row"> -->
+			<!-- Box Schedule -->
+			<div class="col-lg-3 col-md-3">
 				<div class="bg-white border rounded shadow p-4 text-center mb-4 d-grid gap-2">
 					<h2><label class="label_1">Agendamentos</label></h2>
 					
@@ -33,25 +53,7 @@
 			</div>
 
 			<!-- Box Register -->
-			<div class="col-lg-4 col-md-4">
-				<div class="bg-white border rounded shadow p-4 text-center mb-4 d-grid gap-2">
-					<h2><label class="label_1">Verificar Portador</label></h2>
-					
-					<!-- User Check Icon -->
-					<div class="d-md-block d-sm-none d-none m-3">
-						<i class="fa fa-user-check fa-4x"></i>
-					</div>
-					<div class="d-sm-block d-md-none m-3">
-						<i class="fa fa-user-check fa-3x"></i>
-					</div>
-					
-					<!-- Button Registers -->
-					<a href="holder_consult.php" class="btn btn-primary btn-lg" type="submit">Verificar portador</a>
-				</div>
-			</div>
-			
-			<!-- Box Register -->
-			<div class="col-lg-4 col-md-4">
+			<div class="col-lg-3 col-md-3">
 				<div class="bg-white border rounded shadow p-4 text-center mb-4 d-grid gap-2">
 					<h2><label class="label_1">Nova Consulta</label></h2>
 					

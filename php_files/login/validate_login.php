@@ -1,13 +1,14 @@
 <?php
+session_start();
+
 // Session Start
-include '../Sistema_ContaComigo/php_files/function.php';
+include '../app.contacomigo.org/php_files/function.php';
 
 // Defining Variables
 $email_err = $password_err = "";
 $email = $password = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        session_start();
         
         // Test if is empty
         if (empty($_POST["email"])) {
@@ -26,8 +27,8 @@ $email = $password = "";
                 
                 //Email and Password = Invalid
                 if((mysqli_num_rows ($result_email) < 1 )&&(mysqli_num_rows ($result_password) < 1 )){
-                    unset ($_SESSION['email']);
-                    unset ($_SESSION['password']);
+                    unset ($_SESSION["email"]);
+                    unset ($_SESSION["password"]);
                     $email_err = "Email Incorreto";
                     $password_err = "Senha Incorreta";
                     
@@ -38,16 +39,15 @@ $email = $password = "";
                 else{
                         //Validation of Email
                         if((mysqli_num_rows ($result_email) > 0)){
-                            $_SESSION['email'] = $email;
+                            $_SESSION["email"] = $email;
                             
                                 //Validation of Password
                                 if(mysqli_num_rows ($result_password) > 0 ){
-                                    $_SESSION['password'] = $password;
-                                    $_SESSION['email'] = $email;
-                                    $_SESSION['autenticado'] = true;
+                                    $_SESSION["password"] = $password;
+                                    $_SESSION["autenticado"] = 1;
                                     
                                     //Redirect to Home -> Login Success
-                                    header('location: home.php');
+                                    echo '<script>window.location.replace("http://www.app.contacomigo.org/home.php");</script>';
                                 }
                                 else{
                                     unset ($_SESSION['email']);

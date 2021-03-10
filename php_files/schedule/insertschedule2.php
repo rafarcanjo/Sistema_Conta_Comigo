@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         //executa o statement
         $stmt->execute();
-        ?> <script>window.location.replace("http://www.app.contacomigo.org/confirmation_schedule.php");</script> <?php 
+        ?> <script>window.location.replace("http://www.app.contacomigo.org/confirmacao-de-consulta.php");</script> <?php 
     }
     catch (PDOException $erro){
         echo "Não foi possivel inserir os dados no banco: ".$erro->getMessage();

@@ -1,22 +1,29 @@
+<?php 
+header("Content-type: text/html; charset=utf-8");
+
+session_start();
+
+//echo "Sessão teste <br/>";
+//print_r($_SESSION);
+//echo "a".$_SESSION["password"];
+//echo "<br/>b".$_SESSION["email"];
+//echo "<br/>c".$_SESSION["autenticado"];
+
+    /*if(!isset($autenticado)){
+        unset ($email);
+        unset ($password);
+        echo '<script>window.location.replace("http://www.app.contacomigo.org/index.php")</script>';
+    }
+    else{
+        $logado = $email;
+    }*/
+    
+    include 'link.html';
+    //and (!isset ($_SESSION['password']) == true)
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Include Header -->
-	<?php 
-		include 'structure_files/link.html';
-		//and (!isset ($_SESSION['password']) == true)
-        
-		session_start();
-		if((!isset ($_SESSION['autenticado']) == true))
-		{
-		    unset($_SESSION['email']);
-		    unset($_SESSION['password']);
-		    header('location: ../Sistema_ContaComigo/index.php');
-		}
-		else{
-		  $logado = $_SESSION['email'];
-		}
-	?>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light shadow border-bottom">
